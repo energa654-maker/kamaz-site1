@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Техника КАМАЗ в наличии — КамЦентр</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <link rel="stylesheet" href="/site-section.css">
+  <script src="/layout.js?v=5"></script>
+  <script src="/model-data.js"></script>
+  <style>
+    .section-hero { --hero-image: url("/images/dump/6520-49 (B5)/1 (1).jpg"); }
+    .stock-card { overflow: hidden; padding: 0; }
+    .stock-card img { width: 100%; height: 230px; object-fit: cover; display: block; }
+    .stock-body { padding: 22px; }
+    .stock-meta { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 12px; }
+    .price { color: #13795b; font-size: 22px; font-weight: 900; }
+  </style>
+</head>
+<body>
+  <script>renderHeader()</script>
+  <main>
+    <section class="section-hero">
+      <div class="inner hero-content">
+        <div class="kicker">В наличии</div>
+        <h1>Техника, которую можно быстрее вывести в сделку</h1>
+        <p>Раздел показывает модели с приоритетным подбором. Наличие и комплектацию лучше уточнять перед оплатой: техника быстро меняет статус.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/pages/quote.html">Запросить КП</a>
+          <a class="btn btn-outline" href="/index.html#lead-form">Забронировать консультацию</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="inner">
+        <div class="head">
+          <h2>Приоритетные позиции</h2>
+          <p>Если нужной модели нет в списке, оставьте заявку: подберем аналог, поставку или вариант под заказ.</p>
+        </div>
+        <div class="grid" id="stockGrid"></div>
+      </div>
+    </section>
+  </main>
+  <script>renderFooter()</script>
+  <script>
+    const priority = ["65115", "6520", "5490", "54901", "53605", "65117"];
+    const grid = document.getElementById("stockGrid");
+    grid.innerHTML = priority.map((slug, index) => {
+      const model = getKamazModel(slug);
+      const fallback = model.fallbackImage || model.image;
+      const statuses = ["в наличии уточнить", "быстрый расчет", "под заказ", "резерв по заявке"];
+      return `
+        <article class="card stock-card">
+          <img src="${model.image}" alt="${model.title}" onerror="this.onerror=null; this.src='${fallback}'">
+          <div class="stock-body">
+            <div class="stock-meta"><span class="status">${statuses[index % statuses.length]}</span><span>${model.categoryName}</span></div>
+            <h3>${model.title}</h3>
+            <p>${model.short}</p>
+            <div class="tag-row">${model.specs.map(item => `<span>${item}</span>`).join("")}</div>
+            <div class="price">${model.price}</div>
+            <div class="actions">
+              <a class="btn btn-primary" href="${model.page}">Открыть</a>
+              <a class="btn btn-outline" href="/pages/quote.html" onclick="sessionStorage.setItem('kamazLeadModel', '${model.title}')">Получить КП</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join("");
+  </script>
+</body>
+</html>

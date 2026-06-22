@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Отзывы клиентов — КамЦентр</title>
+  <meta name="description" content="Отзывы клиентов КамЦентр о подборе, покупке, лизинге и поставке техники КАМАЗ.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
+  <style>
+    .reviews-hero {
+      min-height: 520px;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(5, 14, 28, .96), rgba(7, 24, 45, .72), rgba(9, 55, 103, .42)),
+        url("/images/truck/54901-70014-CA/1 (1).jpg") center/cover no-repeat;
+    }
+
+    .page-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      padding: 88px 0 58px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 8px;
+      background: rgba(255,255,255,.1);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 790px;
+      margin: 18px 0;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      color: rgba(255,255,255,.86);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .reviews-hero .btn,
+    .cta-panel .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 14px 18px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      text-decoration: none;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .reviews-hero .btn-primary,
+    .cta-panel .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(201, 37, 45, .28);
+    }
+
+    .reviews-hero .btn-secondary,
+    .cta-panel .btn-secondary {
+      border-color: rgba(255,255,255,.34);
+      background: rgba(255,255,255,.12);
+      color: #fff;
+    }
+
+    .section {
+      padding: 68px 0;
+    }
+
+    .section-white {
+      background: #fff;
+    }
+
+    .section-soft {
+      background: #f3f7fb;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      margin: 0;
+      max-width: 700px;
+      color: var(--ink);
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.12;
+    }
+
+    .section-subtitle {
+      max-width: 540px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .trust-item,
+    .review-card,
+    .note-card,
+    .story-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(16,24,40,.06);
+    }
+
+    .trust-item {
+      padding: 22px;
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .review-card {
+      display: grid;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .review-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .client h3 {
+      margin: 0 0 6px;
+      color: var(--blue-dark);
+      font-size: 20px;
+    }
+
+    .client p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .rating {
+      white-space: nowrap;
+      color: #f59e0b;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .review-card blockquote {
+      margin: 0;
+      color: #25324a;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .review-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .review-tags span,
+    .mini-tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #eef5ff;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .story-card {
+      padding: 28px;
+    }
+
+    .story-card h3 {
+      margin: 0 0 14px;
+      color: var(--blue-dark);
+      font-size: 26px;
+    }
+
+    .story-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .story-image {
+      min-height: 360px;
+      border-radius: 8px;
+      background:
+        linear-gradient(180deg, rgba(8,18,35,.15), rgba(8,18,35,.55)),
+        url("/images/dump/6520-49 (B5)/1 (1).jpg") center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .note-card {
+      padding: 24px;
+    }
+
+    .note-card h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 21px;
+    }
+
+    .note-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 8px;
+      background: #08172d;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel h2 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: clamp(28px, 3vw, 40px);
+      line-height: 1.14;
+    }
+
+    .cta-panel p {
+      margin: 0;
+      color: rgba(255,255,255,.78);
+      line-height: 1.65;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    @media (max-width: 980px) {
+      .section-head,
+      .story-layout,
+      .cta-panel {
+        display: block;
+      }
+
+      .section-subtitle,
+      .story-image,
+      .cta-actions {
+        margin-top: 18px;
+      }
+
+      .trust-grid,
+      .reviews-grid,
+      .notes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .reviews-hero {
+        min-height: 560px;
+      }
+
+      .hero-content {
+        padding: 72px 0 44px;
+      }
+
+      .trust-grid,
+      .reviews-grid,
+      .notes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .review-top {
+        display: block;
+      }
+
+      .rating {
+        display: block;
+        margin-top: 10px;
+      }
+
+      .cta-panel {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>renderHeader()</script>
+  <main>
+    <section class="reviews-hero">
+      <div class="page-inner hero-content">
+        <div class="kicker">Отзывы клиентов</div>
+        <h1>Показываем, как КамЦентр помогает бизнесу выбрать и купить технику КАМАЗ</h1>
+        <p class="hero-copy">Здесь собраны примеры отзывов и ситуаций, с которыми к нам обращаются строительные, логистические и производственные компании. Главная ценность для клиента — понятный подбор, честный расчет и сопровождение до передачи техники.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/index.html#lead-form">Оставить заявку</a>
+          <a class="btn btn-secondary" href="/pages/catalog.html">Смотреть каталог</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="page-inner">
+        <div class="trust-grid" aria-label="Факты о работе с клиентами">
+          <div class="trust-item"><strong>1 день</strong><span>обычно нужен на первичный подбор и расчет вариантов</span></div>
+          <div class="trust-item"><strong>4 шага</strong><span>задача, модель, финансирование, оформление и передача</span></div>
+          <div class="trust-item"><strong>по РФ</strong><span>помогаем организовать поставку техники в нужный регион</span></div>
+          <div class="trust-item"><strong>до сделки</strong><span>ведем клиента от консультации до документов и оплаты</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2 class="section-title">Что говорят клиенты после подбора техники</h2>
+          <p class="section-subtitle">Отзывы написаны в формате типовых клиентских историй: кто обратился, какая была задача и что оказалось полезным при работе с КамЦентр.</p>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <div class="review-top">
+              <div class="client">
+                <h3>Алексей</h3>
+                <p>строительная компания, Казань</p>
+              </div>
+              <div class="rating">5 / 5</div>
+            </div>
+            <blockquote>Нужен был самосвал под плотный график на объекте. Менеджер не стал сразу продавать самую дорогую модель, а уточнил плечо перевозки, грунт и загрузку. В итоге выбрали вариант, который подходит по грузоподъемности и не перегружает бюджет.</blockquote>
+            <div class="review-tags"><span>самосвал</span><span>подбор</span><span>строительство</span></div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="client">
+                <h3>Ильдар</h3>
+                <p>логистика, Набережные Челны</p>
+              </div>
+              <div class="rating">5 / 5</div>
+            </div>
+            <blockquote>Сравнивали тягач для междугородних рейсов. Понравилось, что нам отдельно расписали расход, комфорт водителя, подходящие маршруты и примерный платеж по лизингу. После этого решение стало намного спокойнее.</blockquote>
+            <div class="review-tags"><span>тягач</span><span>лизинг</span><span>рейсы</span></div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="client">
+                <h3>Марина</h3>
+                <p>отдел закупок, Самара</p>
+              </div>
+              <div class="rating">5 / 5</div>
+            </div>
+            <blockquote>Для нас было важно быстро получить коммерческое предложение и понятные документы. КамЦентр помог собрать информацию для руководителя: комплектация, сроки, варианты оплаты и дальнейшие шаги по оформлению.</blockquote>
+            <div class="review-tags"><span>документы</span><span>КП</span><span>закупки</span></div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="client">
+                <h3>Роман</h3>
+                <p>карьерные работы, Уфа</p>
+              </div>
+              <div class="rating">5 / 5</div>
+            </div>
+            <blockquote>Обсуждали самосвалы для тяжелых условий. Менеджер сразу задал правильные вопросы: покрытие, уклоны, средняя загрузка, сезонность. Это сэкономило время и помогло не ошибиться с моделью.</blockquote>
+            <div class="review-tags"><span>карьер</span><span>нагрузка</span><span>условия</span></div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="client">
+                <h3>Дмитрий</h3>
+                <p>коммунальная техника, Пермь</p>
+              </div>
+              <div class="rating">5 / 5</div>
+            </div>
+            <blockquote>Искали шасси под надстройку. Нам помогли проверить совместимость по массе и габаритам, подсказали, какие данные нужны для расчета, и не затянули с ответами.</blockquote>
+            <div class="review-tags"><span>шасси</span><span>надстройка</span><span>расчет</span></div>
+          </article>
+
+          <article class="review-card">
+            <div class="review-top">
+              <div class="client">
+                <h3>Сергей</h3>
+                <p>ИП, Татарстан</p>
+              </div>
+              <div class="rating">5 / 5</div>
+            </div>
+            <blockquote>Покупал первую грузовую технику, поэтому вопросов было много. Объяснили простым языком, чем отличаются модели, как считать платеж и какие документы готовить. Для первого опыта это очень важно.</blockquote>
+            <div class="review-tags"><span>первая покупка</span><span>консультация</span><span>поддержка</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="page-inner">
+        <div class="story-layout">
+          <article class="story-card">
+            <span class="mini-tag">История клиента</span>
+            <h3>Как выглядит хорошая сделка</h3>
+            <p>Клиент приходит не за названием модели, а за рабочим результатом: перевозить больше, закрыть новый контракт, заменить старую технику или запустить объект без простоев.</p>
+            <p>Поэтому мы начинаем с задачи. Уточняем груз, маршрут, сезонность, требования к кузову или надстройке, бюджет и желаемый формат оплаты. После этого показываем несколько вариантов: базовый, оптимальный и усиленный.</p>
+            <p>Так руководителю проще принять решение: видно, за что он платит, где можно сэкономить, а где экономия может потом стоить простоев и лишних расходов.</p>
+          </article>
+          <div class="story-image" aria-label="Самосвал КАМАЗ"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2 class="section-title">Что чаще всего отмечают в работе с нами</h2>
+          <p class="section-subtitle">Эти детали повышают доверие: клиент понимает не только цену, но и весь путь покупки техники.</p>
+        </div>
+        <div class="notes-grid">
+          <article class="note-card">
+            <h3>Разговор по делу</h3>
+            <p>Не перегружаем терминами. Сначала выясняем задачу, затем объясняем, какая техника подойдет и почему.</p>
+          </article>
+          <article class="note-card">
+            <h3>Понятный расчет</h3>
+            <p>Помогаем сравнить покупку и лизинг, оценить первый взнос, ежемесячный платеж и нагрузку на бизнес.</p>
+          </article>
+          <article class="note-card">
+            <h3>Сопровождение</h3>
+            <p>Не бросаем клиента после первого звонка: помогаем с коммерческим предложением, документами и передачей техники.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="page-inner">
+        <div class="cta-panel">
+          <div>
+            <h2>Расскажите задачу, а мы предложим подходящую технику</h2>
+            <p>Укажите модель, тип работ, регион и удобный способ связи. Менеджер подготовит варианты и объяснит, какой из них лучше подойдет под ваш бизнес.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="/index.html#lead-form">Оставить заявку</a>
+            <a class="btn btn-secondary" href="https://wa.me/79274191444" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn btn-secondary" href="https://max.ru/" target="_blank" rel="noopener">MAX</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>renderFooter()</script>
+</body>
+</html>

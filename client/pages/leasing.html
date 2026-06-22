@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лизинг техники КАМАЗ — КамЦентр</title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
+
+  <style>
+    .leasing-hero {
+      min-height: 500px;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(8, 18, 35, .98) 0%, rgba(8, 18, 35, .84) 48%, rgba(8, 18, 35, .48) 100%),
+        url("/images/truck/54901-70014-CA/1 (1).jpg") center / cover no-repeat;
+    }
+
+    .page-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero-content {
+      padding: 58px 0 42px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .leasing-hero h1 {
+      max-width: 780px;
+      margin: 18px 0;
+      color: #fff;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .leasing-hero .hero-content h1,
+    .leasing-hero .hero-content p {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+
+    .hero-copy {
+      max-width: 690px;
+      color: rgba(255, 255, 255, .84);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 20px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(201, 37, 45, .26);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--blue-dark);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+      max-width: 900px;
+    }
+
+    .hero-stat {
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-stat strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #fff;
+      font-size: 24px;
+    }
+
+    .hero-stat span {
+      color: rgba(255, 255, 255, .78);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 66px 0;
+    }
+
+    .section-white {
+      background: #fff;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.08;
+    }
+
+    .section-subtitle {
+      max-width: 570px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card,
+    .step-card,
+    .doc-card,
+    .faq-card,
+    .calc-panel,
+    .lead-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+    }
+
+    .info-card,
+    .step-card,
+    .doc-card,
+    .faq-card {
+      padding: 22px;
+    }
+
+    .card-num {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .info-card h3,
+    .step-card h3,
+    .doc-card h3,
+    .faq-card h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 20px;
+    }
+
+    .info-card p,
+    .step-card p,
+    .doc-card p,
+    .faq-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .dark-panel {
+      padding: 28px;
+      border-radius: 8px;
+      background: #08172d;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .dark-panel h2 {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 34px;
+    }
+
+    .dark-panel p {
+      color: rgba(255, 255, 255, .78);
+      line-height: 1.7;
+    }
+
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+      color: rgba(255, 255, 255, .86);
+    }
+
+    .check-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: var(--red);
+    }
+
+    .calc-lead-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .calc-panel,
+    .lead-panel {
+      padding: 26px;
+    }
+
+    .calc-panel {
+      background: #08172d;
+      color: #fff;
+    }
+
+    .calc-panel h2,
+    .lead-panel h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    .calc-panel p {
+      color: rgba(255, 255, 255, .78);
+      line-height: 1.65;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      color: inherit;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      margin-top: 7px;
+      padding: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .result {
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      color: #fff;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    .result strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 24px;
+    }
+
+    .notice {
+      min-height: 24px;
+      margin-top: 12px;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .notice.error {
+      color: var(--red);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 980px) {
+      .cards-grid,
+      .split-layout,
+      .calc-lead-layout,
+      .field-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .leasing-hero {
+        min-height: 0;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .hero-stat {
+        padding: 13px;
+      }
+
+      .hero-stat strong {
+        font-size: 20px;
+      }
+
+      .section-head {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script>renderHeader()</script>
+
+  <main>
+    <section class="leasing-hero">
+      <div class="page-inner hero-content">
+        <div class="kicker">Финансирование техники</div>
+        <h1>Лизинг КАМАЗ без полной оплаты на старте</h1>
+        <p class="hero-copy">Поможем подобрать самосвал, тягач или шасси, рассчитать платеж и подготовить заявку для лизингового партнера. Вы получаете технику в работу, а платежи распределяете на удобный срок.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#calculator">Рассчитать платеж</a>
+          <a class="btn btn-secondary" href="#terms">Посмотреть условия</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>10-49%</strong>
+            <span>ориентир первого взноса</span>
+          </div>
+          <div class="hero-stat">
+            <strong>12-60</strong>
+            <span>месяцев срок договора</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1 день</strong>
+            <span>на первичный расчет</span>
+          </div>
+          <div class="hero-stat">
+            <strong>КАМАЗ</strong>
+            <span>тягачи, самосвалы, шасси</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="terms">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Условия</div>
+            <h2 class="section-title">Что дает лизинг</h2>
+          </div>
+          <p class="section-subtitle">Лизинг помогает обновить парк без крупного разового платежа. Условия зависят от техники, аванса, срока, финансовых показателей клиента и требований лизинговой компании.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="info-card">
+            <div class="card-num">01</div>
+            <h3>Меньше нагрузка на бюджет</h3>
+            <p>Не нужно сразу оплачивать полную стоимость техники. Часть суммы распределяется по ежемесячным платежам.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-num">02</div>
+            <h3>Техника быстрее выходит в работу</h3>
+            <p>После согласования и оформления машина может начать приносить доход до полного выкупа.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-num">03</div>
+            <h3>Можно подобрать график</h3>
+            <p>Срок, аванс и платеж подбираются под сезонность, обороты и планируемую загрузку техники.</p>
+          </article>
+          <article class="info-card">
+            <div class="card-num">04</div>
+            <h3>Сопровождение заявки</h3>
+            <p>Менеджер поможет собрать исходные данные и передать расчет партнеру для точного предложения.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-inner split-layout">
+        <div class="dark-panel">
+          <h2>Кому подходит</h2>
+          <p>Лизинг чаще всего выбирают компании, которым техника нужна сейчас: для стройки, перевозок, карьеров, коммунальных задач, доставки материалов или расширения автопарка.</p>
+          <ul class="check-list">
+            <li>строительные компании и подрядчики;</li>
+            <li>логистические и транспортные организации;</li>
+            <li>производственные предприятия;</li>
+            <li>ИП и ООО, которым нужна техника под контракт;</li>
+            <li>компании, обновляющие или расширяющие парк.</li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="section-kicker">Предмет лизинга</div>
+          <h2 class="section-title">Что можно оформить</h2>
+          <div class="cards-grid" style="grid-template-columns:1fr; margin-top:22px;">
+            <article class="doc-card">
+              <h3>Тягачи КАМАЗ</h3>
+              <p>Магистральные модели для дальних маршрутов, автопарков и регулярных перевозок.</p>
+            </article>
+            <article class="doc-card">
+              <h3>Самосвалы КАМАЗ</h3>
+              <p>Техника для строительства, карьеров, сыпучих грузов и интенсивной эксплуатации.</p>
+            </article>
+            <article class="doc-card">
+              <h3>Шасси и спецтехника</h3>
+              <p>База под фургоны, цистерны, коммунальные, сервисные и монтажные надстройки.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Процесс</div>
+            <h2 class="section-title">Как проходит оформление</h2>
+          </div>
+          <p class="section-subtitle">Мы сделали процесс понятным: сначала задача и расчет, затем согласование условий, документы и передача техники.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="step-card">
+            <div class="card-num">1</div>
+            <h3>Подбор техники</h3>
+            <p>Уточняем задачу, груз, маршруты, условия работы и подбираем подходящую модель.</p>
+          </article>
+          <article class="step-card">
+            <div class="card-num">2</div>
+            <h3>Первичный расчет</h3>
+            <p>Считаем ориентир по платежу, авансу и сроку, чтобы понять комфортный диапазон.</p>
+          </article>
+          <article class="step-card">
+            <div class="card-num">3</div>
+            <h3>Заявка партнеру</h3>
+            <p>Передаем данные лизинговому партнеру и получаем точное предложение по условиям.</p>
+          </article>
+          <article class="step-card">
+            <div class="card-num">4</div>
+            <h3>Договор и передача</h3>
+            <p>После согласования договора организуем оформление и передачу техники клиенту.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Документы</div>
+            <h2 class="section-title">Что обычно нужно для заявки</h2>
+          </div>
+          <p class="section-subtitle">Точный список зависит от лизинговой компании, формы бизнеса и суммы сделки. Ниже базовый ориентир для первичного разговора.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="doc-card">
+            <h3>Для ООО</h3>
+            <p>Реквизиты, ИНН, данные руководителя, информация о деятельности и выбранной технике.</p>
+          </article>
+          <article class="doc-card">
+            <h3>Для ИП</h3>
+            <p>ИНН, паспортные данные, описание деятельности и параметры планируемой сделки.</p>
+          </article>
+          <article class="doc-card">
+            <h3>По технике</h3>
+            <p>Модель, комплектация, стоимость, наличие, желаемый аванс и срок договора.</p>
+          </article>
+          <article class="doc-card">
+            <h3>Для расчета</h3>
+            <p>Желаемый ежемесячный платеж, сезонность бизнеса и планируемая дата запуска техники.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="calculator">
+      <div class="page-inner calc-lead-layout">
+        <div class="calc-panel">
+          <h2>Калькулятор лизинга</h2>
+          <p>Расчет примерный и нужен для ориентира. Точное предложение зависит от условий партнера, аванса, срока, стоимости техники и финансовых данных клиента.</p>
+
+          <div class="field-grid">
+            <label>Стоимость техники
+              <input id="price" type="number" min="0" value="9200000">
+            </label>
+            <label>Первый взнос, %
+              <input id="percent" type="number" min="0" max="80" value="20">
+            </label>
+            <label>Срок, месяцев
+              <input id="months" type="number" min="1" value="36">
+            </label>
+          </div>
+
+          <button class="btn btn-secondary" type="button" onclick="calcLease()" style="width:100%; margin-top:14px;">Рассчитать платеж</button>
+
+          <div class="result" id="result">Введите данные и нажмите «Рассчитать платеж».</div>
+        </div>
+
+        <form class="lead-panel" onsubmit="sendLeaseLead(event)">
+          <h2>Получить точное предложение</h2>
+          <p class="section-subtitle" style="margin-bottom:18px;">Оставьте контакты, и менеджер уточнит модель, условия и подготовит расчет под вашу задачу.</p>
+
+          <label>Ваше имя
+            <input id="name" required autocomplete="name" placeholder="Иван">
+          </label>
+          <label style="margin-top:12px;">Телефон
+            <input id="phone" required autocomplete="tel" placeholder="+7 ___ ___-__-__">
+          </label>
+          <label style="margin-top:12px;">Интересующая техника
+            <select id="vehicle">
+              <option>КАМАЗ 5490 / 54901</option>
+              <option>КАМАЗ 65115</option>
+              <option>КАМАЗ 6520</option>
+              <option>Шасси или спецтехника</option>
+              <option>Нужен подбор</option>
+            </select>
+          </label>
+          <label style="margin-top:12px;">Комментарий
+            <textarea id="comment" placeholder="Например: нужен самосвал под стройку, аванс 20%, срок 36 месяцев"></textarea>
+          </label>
+
+          <button class="btn btn-primary" type="submit" style="width:100%; margin-top:14px;">Отправить заявку</button>
+          <div class="notice" id="notice" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Вопросы</div>
+            <h2 class="section-title">Частые вопросы</h2>
+          </div>
+          <p class="section-subtitle">Собрали ответы на вопросы, которые чаще всего возникают перед расчетом.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>Это окончательный расчет?</h3>
+            <p>Нет. Калькулятор показывает ориентир. Точный платеж рассчитывает лизинговый партнер после проверки данных и согласования техники.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Можно оформить технику под заказ?</h3>
+            <p>Да, условия можно обсудить для техники в наличии и под заказ. Сроки зависят от модели и комплектации.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Нужна ли полная оплата?</h3>
+            <p>Нет, обычно оплачивается первоначальный взнос, а остальная сумма распределяется по договору.</p>
+          </article>
+          <article class="faq-card">
+            <h3>Можно ли подобрать модель перед заявкой?</h3>
+            <p>Да. Если вы не уверены в модели, опишите задачу, груз и условия работы — менеджер предложит подходящие варианты.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>renderFooter()</script>
+
+  <script>
+    let leaseResultText = "";
+    const formatter = new Intl.NumberFormat("ru-RU");
+
+    function calcLease() {
+      const price = Number(document.getElementById("price").value || 0);
+      const percent = Number(document.getElementById("percent").value || 0);
+      const months = Number(document.getElementById("months").value || 0);
+      const result = document.getElementById("result");
+
+      if (!price || !months) {
+        leaseResultText = "";
+        result.textContent = "Введите стоимость техники и срок лизинга.";
+        return;
+      }
+
+      const down = price * (percent / 100);
+      const financed = Math.max(price - down, 0);
+      const monthlyRate = 0.17 / 12;
+      const monthly = monthlyRate > 0
+        ? financed * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1)
+        : financed / months;
+
+      leaseResultText = [
+        `Стоимость техники: ${formatter.format(price)} ₽`,
+        `Первоначальный взнос: ${percent}% (${formatter.format(Math.round(down))} ₽)`,
+        `Срок договора: ${months} мес.`,
+        `Сумма финансирования: ${formatter.format(Math.round(financed))} ₽`,
+        `Ориентировочный платеж: ${formatter.format(Math.round(monthly))} ₽ / мес.`
+      ].join("\\n");
+
+      result.innerHTML = `<strong>${formatter.format(Math.round(monthly))} ₽ / мес.</strong><br>${leaseResultText}`;
+    }
+
+    async function sendLeaseLead(event) {
+      event.preventDefault();
+
+      const notice = document.getElementById("notice");
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const vehicle = document.getElementById("vehicle").value;
+      const comment = document.getElementById("comment").value.trim();
+
+      notice.classList.remove("error");
+
+      if (!name || !phone) {
+        notice.classList.add("error");
+        notice.textContent = "Введите имя и телефон.";
+        return;
+      }
+
+      if (!leaseResultText) {
+        calcLease();
+      }
+
+      notice.textContent = "Отправляем заявку...";
+
+      try {
+        const response = await fetch(window.kamazApiUrl("/api/leads"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            phone,
+            comment: `Заявка на лизинг. Техника: ${vehicle}. ${comment}\\n\\n${leaseResultText}`
+          })
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+
+        notice.textContent = "Заявка отправлена. Менеджер свяжется с вами.";
+        event.target.reset();
+      } catch (error) {
+        notice.classList.add("error");
+        notice.textContent = "Не удалось отправить через сайт. Позвоните нам или попробуйте позже.";
+      }
+    }
+
+    ["price", "percent", "months"].forEach(id => {
+      document.getElementById(id).addEventListener("input", calcLease);
+    });
+
+    calcLease();
+  </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сервис, доставка и оформление — КамЦентр</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
+  <style>
+    .page-hero { min-height: 460px; display: grid; align-items: end; color: #fff; background: linear-gradient(90deg, rgba(8,18,35,.96), rgba(8,18,35,.68)), url("/images/truck/53605-6010-48/i.jpg") center/cover no-repeat; }
+    .page-inner { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .hero-content { padding: 72px 0 54px; }
+    .kicker { display: inline-block; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 8px; background: rgba(255,255,255,.1); font-size: 14px; font-weight: 900; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 18px 0; font-size: clamp(36px,5vw,58px); line-height: 1.04; }
+    .hero-copy { max-width: 700px; color: rgba(255,255,255,.84); font-size: 18px; line-height: 1.65; }
+    .section { padding: 64px 0; }
+    .section-white { background: #fff; }
+    .section-head { display: flex; justify-content: space-between; gap: 28px; align-items: end; margin-bottom: 28px; }
+    .section-title { margin: 0; font-size: clamp(28px,3vw,42px); color: var(--ink); }
+    .section-subtitle { max-width: 560px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .wide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 8px 26px rgba(16,24,40,.06); }
+    .num { width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 16px; border-radius: 8px; background: var(--red); color: #fff; font-weight: 900; }
+    .card h3 { margin: 0 0 10px; color: var(--blue-dark); font-size: 20px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .card ul { margin: 12px 0 0; padding-left: 20px; color: var(--muted); line-height: 1.7; }
+    .dark-panel { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 30px; border-radius: 8px; background: #08172d; color: #fff; box-shadow: var(--shadow); }
+    .dark-panel h2 { margin: 0 0 10px; color: #fff; font-size: 34px; }
+    .dark-panel p { margin: 0; color: rgba(255,255,255,.78); line-height: 1.65; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 18px; border-radius: 8px; text-decoration: none; font-weight: 900; }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.35); color: #fff; background: rgba(255,255,255,.1); }
+    @media (max-width: 950px) { .section-head, .grid, .wide-grid, .dark-panel { display: block; } .card, .actions { margin-top: 16px; } }
+  </style>
+</head>
+<body>
+  <script>renderHeader()</script>
+  <main>
+    <section class="page-hero">
+      <div class="page-inner hero-content">
+        <div class="kicker">Сервис и оформление</div>
+        <h1>Помогаем довести сделку до передачи техники</h1>
+        <p class="hero-copy">Покупка коммерческой техники — это не только цена. Важно заранее понимать документы, доставку, лизинг, сроки, комплектацию и дальнейшее обслуживание.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2 class="section-title">Доставка, документы и передача</h2>
+          <p class="section-subtitle">Этот блок помогает заранее понять, какие данные нужны и почему сроки могут отличаться у разных сделок.</p>
+        </div>
+        <div class="wide-grid">
+          <article class="card">
+            <h3>Что уточняем до расчета</h3>
+            <p>Чем точнее вводные, тем быстрее можно подготовить предложение и маршрут сделки.</p>
+            <ul>
+              <li>город передачи техники и желаемый срок</li>
+              <li>модель, комплектация или описание задачи</li>
+              <li>формат оплаты: покупка, лизинг, предварительный расчет</li>
+              <li>реквизиты для КП и контакт ответственного</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Что получает клиент</h3>
+            <p>Наша задача — сделать покупку техники понятной для руководителя, бухгалтера и человека, который будет запускать машину в работу.</p>
+            <ul>
+              <li>ориентир по цене и комплектации</li>
+              <li>список документов и следующих шагов</li>
+              <li>пояснение по срокам и условиям передачи</li>
+              <li>рекомендации по модели под реальную эксплуатацию</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-white">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2 class="section-title">Что сопровождаем</h2>
+          <p class="section-subtitle">Собрали основные этапы, которые помогают клиенту не потеряться между выбором модели и запуском техники в работу.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="num">1</div><h3>Подбор</h3><p>Модель, комплектация, надстройка, условия эксплуатации и бюджет.</p></article>
+          <article class="card"><div class="num">2</div><h3>Документы</h3><p>Коммерческое предложение, реквизиты, договор, счет и данные для лизинга.</p></article>
+          <article class="card"><div class="num">3</div><h3>Доставка</h3><p>Обсуждаем передачу техники, сроки, город и удобный формат получения.</p></article>
+          <article class="card"><div class="num">4</div><h3>После покупки</h3><p>Подскажем по следующим шагам, сервису, эксплуатации и расширению парка.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="page-inner">
+        <div class="section-head">
+          <h2 class="section-title">Частые вопросы по оформлению</h2>
+          <p class="section-subtitle">Если нужна техника срочно, лучше сразу оставить заявку с моделью, городом и желаемой датой запуска.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><h3>Можно ли купить в лизинг?</h3><p>Да, мы поможем подготовить первичный расчет и передать заявку партнеру.</p></article>
+          <article class="card"><h3>Можно ли подобрать надстройку?</h3><p>Да, подскажем варианты шасси и направления по типу задачи.</p></article>
+          <article class="card"><h3>Что влияет на срок?</h3><p>Наличие техники, комплектация, документы, логистика и условия оплаты.</p></article>
+          <article class="card"><h3>Как начать?</h3><p>Оставьте заявку или позвоните. Достаточно описать задачу и бюджет.</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-white">
+      <div class="page-inner">
+        <div class="dark-panel">
+          <div>
+            <h2>Нужна поставка в ваш регион?</h2>
+            <p>Оставьте заявку с городом и моделью. Мы подскажем, какие варианты техники и оформления стоит рассмотреть.</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn-primary" href="/index.html#lead-form">Оставить заявку</a>
+            <a class="btn btn-outline" href="/pages/faq.html">Открыть FAQ</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>renderFooter()</script>
+</body>
+</html>

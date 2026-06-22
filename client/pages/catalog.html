@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог техники — КамЦентр</title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/layout.js?v=5"></script>
+  <script src="/model-data.js"></script>
+
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d7dde7;
+      --paper: #ffffff;
+      --soft: #f4f6f9;
+      --blue: #0a56a8;
+      --blue-dark: #073b76;
+      --red: #c9252d;
+      --green: #13795b;
+    }
+
+    body {
+      background: var(--soft);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .catalog-hero {
+      padding: 74px 0 48px;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(8, 18, 35, .95), rgba(8, 18, 35, .72)),
+        url("/images/dump/6520-49 (B5)/1 (1).jpg") center / cover no-repeat;
+    }
+
+    .page-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .catalog-hero h1 {
+      max-width: 760px;
+      margin: 14px 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.03;
+    }
+
+    .catalog-hero p {
+      max-width: 680px;
+      color: rgba(255, 255, 255, .84);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .catalog-section {
+      padding: 56px 0 72px;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .catalog-card {
+      display: none;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+    }
+
+    .catalog-card.visible {
+      display: block;
+    }
+
+    .catalog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #e7f1ff;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .card-body h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: var(--ink);
+    }
+
+    .card-body p {
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .specs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+
+    .specs span {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #344054;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .price {
+      margin-bottom: 18px;
+      color: var(--green);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 16px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 900;
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .btn-outline {
+      border-color: var(--line);
+      background: #fff;
+      color: var(--blue-dark);
+    }
+
+    @media (max-width: 950px) {
+      .catalog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <script>renderHeader()</script>
+
+  <main>
+    <section class="catalog-hero">
+      <div class="page-inner">
+        <div class="kicker">Каталог</div>
+        <h1>Грузовая техника КАМАЗ под разные задачи бизнеса</h1>
+        <p>Собрали основные модели и направления. Можно выбрать категорию, посмотреть карточку техники и отправить заявку на расчет.</p>
+      </div>
+    </section>
+
+    <section class="catalog-section">
+      <div class="page-inner">
+        <div class="tabs" aria-label="Фильтр каталога">
+          <button class="tab-btn active" type="button" data-filter="all">Все</button>
+          <button class="tab-btn" type="button" data-filter="dump">Самосвалы</button>
+          <button class="tab-btn" type="button" data-filter="truck">Тягачи</button>
+          <button class="tab-btn" type="button" data-filter="special">Шасси и спецтехника</button>
+        </div>
+        <div class="tabs" aria-label="Фильтр по задачам">
+          <button class="tab-btn active" type="button" data-task="all">Все задачи</button>
+          <button class="tab-btn" type="button" data-task="construction">Стройка</button>
+          <button class="tab-btn" type="button" data-task="quarry">Карьер</button>
+          <button class="tab-btn" type="button" data-task="route">Магистраль</button>
+          <button class="tab-btn" type="button" data-task="delivery">Доставка</button>
+          <button class="tab-btn" type="button" data-task="body">Надстройки</button>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>renderFooter()</script>
+
+  <script>
+    const catalogGrid = document.getElementById("catalogGrid");
+    let activeFilter = "all";
+    let activeTask = "all";
+    const taskMap = {
+      construction: ["65115", "6520", "6595", "65117"],
+      quarry: ["6520", "6595", "6560"],
+      route: ["5490", "54901"],
+      delivery: ["4308", "5325", "65117"],
+      body: ["43118", "5350", "53605", "65117", "5325"]
+    };
+
+    function renderCatalogCards() {
+      catalogGrid.innerHTML = window.KAMAZ_MODELS.map(model => {
+        const image = model.image;
+        const fallback = model.fallbackImage || model.image;
+        const categoryMatch = activeFilter === "all" || model.category === activeFilter;
+        const taskMatch = activeTask === "all" || (taskMap[activeTask] || []).includes(model.slug);
+        const visible = categoryMatch && taskMatch;
+        return `
+          <article class="catalog-card ${visible ? "visible" : ""}" data-category="${model.category}">
+            <img src="${image}" alt="${model.title}" onerror="this.onerror=null; this.src='${fallback}'">
+            <div class="card-body">
+              <span class="tag">${model.categoryName}</span>
+              <h2>${model.title}</h2>
+              <p>${model.short}</p>
+              <div class="specs">${model.specs.map(item => `<span>${item}</span>`).join("")}</div>
+              <div class="price">${model.price}</div>
+              <div class="btn-row">
+                <a class="btn btn-primary" href="${model.page}">Подробнее</a>
+                <a class="btn btn-outline" href="/index.html#lead-form" onclick="sessionStorage.setItem('kamazLeadModel', '${model.title}')">Запросить расчет</a>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    document.querySelectorAll("[data-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+
+        activeFilter = button.dataset.filter;
+        renderCatalogCards();
+      });
+    });
+
+    document.querySelectorAll("[data-task]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-task]").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        activeTask = button.dataset.task;
+        renderCatalogCards();
+      });
+    });
+
+    renderCatalogCards();
+  </script>
+</body>
+</html>

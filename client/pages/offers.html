@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Акции и спецпредложения — КамЦентр</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
+  <style>
+    .hero { min-height: 500px; display: grid; align-items: end; color: #fff; background: linear-gradient(90deg, rgba(8,18,35,.96), rgba(8,18,35,.68)), url("/images/dump/6520-49 (B5)/1 (1).jpg") center/cover no-repeat; }
+    .inner { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .hero-content { padding: 76px 0 54px; }
+    .kicker { display: inline-block; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 8px; background: rgba(255,255,255,.1); font-size: 14px; font-weight: 900; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 18px 0; font-size: clamp(36px,5vw,60px); line-height: 1.04; }
+    .hero p { max-width: 690px; color: rgba(255,255,255,.84); font-size: 18px; line-height: 1.65; }
+    .section { padding: 64px 0; }
+    .soft { background: #f4f6f9; }
+    .section-head { display: flex; justify-content: space-between; gap: 28px; align-items: end; margin-bottom: 28px; }
+    .section-head h2 { max-width: 650px; margin: 0; color: var(--ink); font-size: clamp(28px,3vw,42px); line-height: 1.12; }
+    .section-head p { max-width: 520px; margin: 0; color: var(--muted); line-height: 1.65; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .offer-card, .step-card, .cta { border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 10px 28px rgba(16,24,40,.06); }
+    .offer-card { overflow: hidden; }
+    .offer-top { padding: 24px; color: #fff; background: #073b76; }
+    .offer-top strong { display: block; font-size: 28px; line-height: 1.05; }
+    .offer-body { padding: 24px; }
+    .offer-body h3, .step-card h3 { margin: 0 0 10px; color: var(--blue-dark); font-size: 22px; }
+    .offer-body p, .step-card p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .offer-body ul { margin: 16px 0 0; padding-left: 20px; color: var(--muted); line-height: 1.7; }
+    .step-card { padding: 24px; }
+    .num { display: inline-grid; place-items: center; width: 38px; height: 38px; margin-bottom: 14px; border-radius: 8px; background: #eef5ff; color: var(--blue-dark); font-weight: 900; }
+    .cta { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding: 30px; background: #08172d; color: #fff; }
+    .cta h2 { margin: 0 0 10px; color: #fff; font-size: 34px; }
+    .cta p { margin: 0; color: rgba(255,255,255,.78); line-height: 1.65; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 18px; border-radius: 8px; text-decoration: none; font-weight: 900; }
+    .btn-primary { background: var(--red); color: #fff; }
+    .btn-outline { border: 1px solid rgba(255,255,255,.35); color: #fff; background: rgba(255,255,255,.1); }
+    @media (max-width: 900px) { .section-head, .grid, .cta { display: block; } .offer-card, .step-card, .actions { margin-top: 16px; } }
+  </style>
+</head>
+<body>
+  <script>renderHeader()</script>
+  <main>
+    <section class="hero">
+      <div class="inner hero-content">
+        <div class="kicker">Спецпредложения</div>
+        <h1>Выгодные сценарии покупки техники КАМАЗ</h1>
+        <p>Собрали предложения, которые помогают быстрее принять решение: расчет лизинга, подбор техники под задачу, подготовка коммерческого предложения и консультация по поставке.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/index.html#lead-form">Получить предложение</a>
+          <a class="btn btn-outline" href="/pages/catalog.html">Смотреть модели</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="inner">
+        <div class="section-head">
+          <h2>Что можно запросить прямо сейчас</h2>
+          <p>Формулировки можно менять под реальные акции. Сейчас это аккуратные коммерческие офферы без спорных обещаний.</p>
+        </div>
+        <div class="grid">
+          <article class="offer-card">
+            <div class="offer-top"><strong>Лизинг</strong><span>ориентир платежа за 1 день</span></div>
+            <div class="offer-body"><h3>Расчет под ваш бюджет</h3><p>Подберем модель и покажем, какой первоначальный взнос и срок могут быть удобны.</p><ul><li>самосвалы</li><li>тягачи</li><li>шасси под надстройки</li></ul></div>
+          </article>
+          <article class="offer-card">
+            <div class="offer-top"><strong>КП</strong><span>для руководителя или закупок</span></div>
+            <div class="offer-body"><h3>Коммерческое предложение</h3><p>Подготовим понятный вариант с моделью, комплектацией, условиями и следующими шагами.</p><ul><li>для юрлиц</li><li>для ИП</li><li>для тендера или сравнения</li></ul></div>
+          </article>
+          <article class="offer-card">
+            <div class="offer-top"><strong>Подбор</strong><span>не только по цене</span></div>
+            <div class="offer-body"><h3>Техника под задачу</h3><p>Сравним несколько моделей и объясним, где экономия оправдана, а где лучше взять запас.</p><ul><li>маршрут</li><li>груз</li><li>условия эксплуатации</li></ul></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="inner">
+        <div class="section-head">
+          <h2>Как получить спецпредложение</h2>
+          <p>Чем точнее вводные, тем быстрее получится расчет и подбор техники.</p>
+        </div>
+        <div class="grid">
+          <article class="step-card"><div class="num">1</div><h3>Опишите задачу</h3><p>Тип техники, груз, город, срок покупки и формат оплаты.</p></article>
+          <article class="step-card"><div class="num">2</div><h3>Получите варианты</h3><p>Менеджер предложит модели, комплектации и ориентиры по цене.</p></article>
+          <article class="step-card"><div class="num">3</div><h3>Согласуйте сделку</h3><p>Подготовим КП, документы и дальнейший маршрут покупки.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="inner">
+        <div class="cta">
+          <div><h2>Запросить спецпредложение</h2><p>Оставьте заявку, и мы подготовим вариант под вашу задачу, бюджет и сроки.</p></div>
+          <div class="actions"><a class="btn btn-primary" href="/index.html#lead-form">Оставить заявку</a><a class="btn btn-outline" href="https://max.ru/" target="_blank" rel="noopener">MAX</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>renderFooter()</script>
+</body>
+</html>

@@ -1,0 +1,1974 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>КамЦентр - продажа техники КАМАЗ</title>
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d7dde7;
+      --paper: #ffffff;
+      --soft: #f4f6f9;
+      --blue: #0a56a8;
+      --blue-dark: #073b76;
+      --red: #c9252d;
+      --green: #13795b;
+      --amber: #b7791f;
+      --shadow: 0 18px 48px rgba(16, 24, 40, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .topbar {
+      background: #172033;
+      color: #eef2f7;
+      font-size: 14px;
+    }
+
+    .topbar-inner,
+    .header-inner,
+    .section-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .topbar a {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: var(--blue-dark);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue), var(--red));
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: #344054;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav a:hover {
+      color: var(--blue);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 24px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(9, 20, 38, .98) 0%, rgba(9, 20, 38, .9) 48%, rgba(9, 20, 38, .55) 100%),
+        linear-gradient(135deg, #172033, #0a56a8);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0;
+    }
+
+    .hero-art {
+      position: absolute;
+      right: max(24px, calc((100vw - 1180px) / 2));
+      bottom: 58px;
+      z-index: 1;
+      width: min(540px, 46vw);
+      opacity: .9;
+      filter: drop-shadow(0 26px 40px rgba(0, 0, 0, .34));
+    }
+
+    .hero-art svg {
+      width: 100%;
+      height: auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      color: #e7edf6;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--red);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 18px 0 18px;
+      font-size: clamp(32px, 4vw, 50px);
+      line-height: 1.03;
+      letter-spacing: 0;
+    }
+
+    .hero-text {
+      max-width: 650px;
+      margin-bottom: 24px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 20px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(201, 37, 45, .26);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--blue-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--blue-dark);
+    }
+
+    .hero-stats {
+      display: none;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      width: min(900px, 100%);
+      margin-top: 32px;
+      background: rgba(255, 255, 255, .2);
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .hero-stat {
+      padding: 18px;
+      background: rgba(12, 22, 39, .62);
+    }
+
+    .hero-stat strong {
+      display: block;
+      font-size: 24px;
+    }
+
+    .hero-stat span {
+      color: rgba(255, 255, 255, .78);
+      font-size: 14px;
+    }
+
+    section,
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-soft {
+      background: var(--soft);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      margin: 6px 0 0;
+      color: var(--ink);
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: 1.12;
+    }
+
+    .section-subtitle {
+      max-width: 610px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .feature-grid,
+    .catalog,
+    .finance-grid,
+    .footer-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .feature {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .feature-icon {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: #eef4fb;
+      color: var(--blue);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .feature h3,
+    .vehicle h3,
+    .finance-panel h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .feature p,
+    .vehicle p,
+    .finance-panel p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #344054;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .catalog {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .vehicle {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .vehicle:hover {
+      border-color: rgba(10, 86, 168, .35);
+      box-shadow: 0 18px 42px rgba(16, 24, 40, .14);
+      transform: translateY(-4px);
+    }
+
+    .vehicle-visual {
+      height: 210px;
+      background:
+        radial-gradient(circle at 75% 25%, rgba(255, 255, 255, .35), transparent 26%),
+        linear-gradient(135deg, #dbe7f5, #9fb2ca);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .vehicle-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s ease;
+    }
+
+    .vehicle:hover .vehicle-visual img {
+      transform: scale(1.04);
+    }
+
+    .vehicle-badges {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      z-index: 2;
+    }
+
+    .vehicle-badge {
+      padding: 6px 9px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .92);
+      color: #172033;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(16, 24, 40, .12);
+    }
+
+    .vehicle-body {
+      padding: 22px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      border-radius: 8px;
+      background: #eef4fb;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .vehicle-lead {
+      min-height: 72px;
+    }
+
+    .vehicle-highlight {
+      margin: 16px 0 0;
+      padding: 12px;
+      border-left: 3px solid var(--blue);
+      border-radius: 8px;
+      background: #f7fbff;
+      color: #253044;
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .vehicle-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .vehicle-info div {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .vehicle-info span {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .vehicle-info strong {
+      color: #172033;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .vehicle-use {
+      display: grid;
+      gap: 7px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      color: #344054;
+      font-size: 14px;
+    }
+
+    .vehicle-use li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .vehicle-use li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .65em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 18px 0;
+      color: #344054;
+      font-size: 14px;
+    }
+
+    .specs span {
+      padding: 8px;
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .price {
+      margin: 16px 0;
+      color: var(--blue-dark);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .vehicle-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .vehicle-actions .btn {
+      min-height: 44px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+
+    .finance-grid {
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+
+    .finance-panel {
+      padding: 28px;
+      border-radius: 8px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .calc {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    label {
+      display: grid;
+      gap: 7px;
+      color: #344054;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .calc-result {
+      padding: 18px;
+      border-radius: 8px;
+      background: #eef4fb;
+      color: var(--blue-dark);
+    }
+
+    .calc-result strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1.1;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      background: var(--blue);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .lead-band {
+      background: #172033;
+      color: #fff;
+    }
+
+    .lead-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .lead-list {
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      color: rgba(255, 255, 255, .84);
+    }
+
+    .lead-list li {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 10px;
+    }
+
+    .lead-list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 10px;
+      border-radius: 999px;
+      background: var(--red);
+    }
+
+    .lead-form {
+      padding: 26px;
+      border-radius: 8px;
+      background: #fff;
+      color: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .notice {
+      min-height: 24px;
+      margin-top: 12px;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .notice.error {
+      color: var(--red);
+    }
+
+    .footer {
+      background: #0c1220;
+      color: #d8dee9;
+      padding: 44px 0 26px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1.2fr 1fr 1fr;
+      margin-bottom: 28px;
+    }
+
+    .footer h3 {
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .footer p {
+      margin: 8px 0;
+      color: #c6cfdd;
+    }
+
+    .footer a {
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .copyright {
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      color: #9aa5b5;
+      font-size: 14px;
+    }
+
+    .floating-contact {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 40;
+      display: flex;
+      gap: 8px;
+      padding: 8px;
+      border: 1px solid rgba(215,221,231,.9);
+      border-radius: 8px;
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .floating-contact .btn {
+      min-height: 42px;
+      padding: 11px 13px;
+      white-space: nowrap;
+    }
+
+    .task-grid,
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .task-card,
+    .case-card,
+    .quiz-panel,
+    .messenger-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+    }
+
+    .task-card,
+    .case-card,
+    .messenger-card {
+      padding: 22px;
+    }
+
+    .task-card h3,
+    .case-card h3,
+    .messenger-card h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 21px;
+    }
+
+    .task-card p,
+    .case-card p,
+    .messenger-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .quiz-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 420px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .quiz-panel {
+      padding: 26px;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .quiz-option {
+      min-height: 54px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-weight: 900;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .quiz-option.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .quiz-result {
+      padding: 24px;
+      border-radius: 8px;
+      background: #08172d;
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-result h3 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-size: 26px;
+    }
+
+    .quiz-result p {
+      color: rgba(255, 255, 255, .78);
+      line-height: 1.7;
+    }
+
+    .messenger-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .messenger-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 920px) {
+      .topbar-inner {
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        padding: 8px 0;
+      }
+
+      .header-inner {
+        height: auto;
+        min-height: 68px;
+        flex-wrap: wrap;
+        padding: 10px 0;
+      }
+
+      .menu-btn {
+        display: grid;
+        place-items: center;
+      }
+
+      .nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 0;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 10px 0;
+      }
+
+      .hero {
+        min-height: 620px;
+        background:
+          linear-gradient(180deg, rgba(9, 20, 38, .98) 0%, rgba(9, 20, 38, .85) 58%, rgba(9, 20, 38, .68) 100%),
+          linear-gradient(135deg, #172033, #0a56a8);
+      }
+
+      .hero-art {
+        right: -60px;
+        bottom: 42px;
+        width: min(520px, 72vw);
+        opacity: .42;
+      }
+
+      .section-head,
+      .lead-layout,
+      .finance-grid {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .task-grid,
+      .case-grid,
+      .quiz-layout,
+      .quiz-options,
+      .messenger-row {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid,
+      .catalog {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .vehicle-info,
+      .vehicle-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-inner {
+        padding: 54px 0 34px;
+      }
+
+      .hero-text {
+        font-size: 17px;
+      }
+
+      .hero-stats,
+      .feature-grid,
+      .catalog,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      section,
+      .section {
+        padding: 54px 0;
+      }
+
+      .floating-contact {
+        left: 16px;
+        right: 16px;
+        overflow-x: auto;
+      }
+
+      .floating-contact .btn {
+        flex: 1 0 auto;
+      }
+
+      .vehicle-visual {
+        height: 185px;
+      }
+
+      .vehicle-body {
+        padding: 18px;
+      }
+
+      .vehicle-lead {
+        min-height: auto;
+      }
+
+      .vehicle-badges {
+        left: 10px;
+        right: 10px;
+        top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="/api.js?v=postgres1"></script>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span>Продажа, подбор и финансовые решения для коммерческой техники</span>
+      <a href="tel:+79274191444">+7 (927) 419-14-44</a>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="КамЦентр">
+        <span class="brand-mark">К</span>
+        <span>КамЦентр</span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Открыть меню" onclick="toggleMenu()">≡</button>
+      <nav class="nav" id="mobileMenu">
+        <a href="/pages/catalog.html">Каталог</a>
+        <a href="/pages/stock.html">В наличии</a>
+        <a href="/pages/offers.html">Акции</a>
+        <a href="/pages/leasing.html">Лизинг</a>
+        <a href="/pages/service.html">Сервис</a>
+        <a href="/pages/faq.html">FAQ</a>
+        <a href="/pages/reviews.html">Отзывы</a>
+        <a href="/pages/about.html">О компании</a>
+        <a href="#process">Как купить</a>
+        <a href="/pages/vacancies.html">Вакансии</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 720 390" role="presentation">
+          <defs>
+            <linearGradient id="cab" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#c8d7e8"/>
+            </linearGradient>
+            <linearGradient id="body" x1="0" x2="1">
+              <stop offset="0" stop-color="#1f6fbe"/>
+              <stop offset="1" stop-color="#0a56a8"/>
+            </linearGradient>
+          </defs>
+          <path d="M42 318h626" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".22"/>
+          <path d="M94 150h285l-34 118H116z" fill="url(#body)"/>
+          <path d="M116 126h260l-12 42H102z" fill="#c9252d"/>
+          <path d="M390 180h82l72 78v50H372v-96c0-18 10-32 18-32z" fill="url(#cab)"/>
+          <path d="M419 196h50l38 42h-88z" fill="#7fb3dc"/>
+          <rect x="58" y="256" width="592" height="38" rx="12" fill="#0b1220"/>
+          <rect x="102" y="186" width="210" height="16" rx="8" fill="#ffffff" opacity=".35"/>
+          <circle cx="166" cy="306" r="48" fill="#091425"/>
+          <circle cx="166" cy="306" r="21" fill="#d7dde7"/>
+          <circle cx="438" cy="306" r="48" fill="#091425"/>
+          <circle cx="438" cy="306" r="21" fill="#d7dde7"/>
+          <circle cx="574" cy="306" r="48" fill="#091425"/>
+          <circle cx="574" cy="306" r="21" fill="#d7dde7"/>
+          <path d="M574 178c34 16 66 44 86 76" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round" opacity=".18"/>
+          <path d="M30 116c70-28 144-42 222-42 94 0 178 20 254 60" fill="none" stroke="#ffffff" stroke-width="3" opacity=".13"/>
+        </svg>
+      </div>
+      <div class="hero-inner">
+        <div class="eyebrow">Техника КАМАЗ под ваши задачи</div>
+        <h1>Подберем грузовую технику под задачу, бюджет и сроки</h1>
+        <p class="hero-text">Самосвалы, тягачи и спецтехника для строительства, логистики и промышленных компаний. Поможем с выбором комплектации, расчетом лизинга и оформлением заявки.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/pages/catalog.html">Смотреть каталог</a>
+          <a class="btn btn-secondary" href="#lead-form">Получить подбор</a>
+        </div>
+        <div class="hero-stats" aria-label="Преимущества">
+          <div class="hero-stat">
+            <strong>1 день</strong>
+            <span>на первичный расчет и подбор</span>
+          </div>
+          <div class="hero-stat">
+            <strong>по РФ</strong>
+            <span>организация поставки техники</span>
+          </div>
+          <div class="hero-stat">
+            <strong>CRM</strong>
+            <span>заявки сразу попадают менеджеру</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Почему КамЦентр</div>
+            <h2 class="section-title">Покупка техники без лишней беготни</h2>
+          </div>
+          <p class="section-subtitle">Берем на себя подбор, согласование комплектации, расчет условий и сопровождение сделки до передачи техники.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-icon">01</div>
+            <h3>Подбор под задачу</h3>
+            <p>Учитываем тип груза, маршрут, сезонность, нагрузку и требования к кузову.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">02</div>
+            <h3>Расчет владения</h3>
+            <p>Помогаем сравнить комплектации, цену, платеж и коммерческую выгоду.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">03</div>
+            <h3>Финансовый сервис</h3>
+            <p>Лизинг и удобные сценарии оплаты для ООО, ИП и автопарков.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">04</div>
+            <h3>Сопровождение</h3>
+            <p>Менеджер ведет заявку от консультации до передачи техники клиенту.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="catalog">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Каталог</div>
+            <h2 class="section-title">Популярная техника</h2>
+          </div>
+          <p class="section-subtitle">Собрали востребованные модели для строительства, логистики и специальных задач. Отфильтруйте технику по назначению.</p>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" type="button" data-filter="all">Все</button>
+          <button class="filter-btn" type="button" data-filter="dump">Самосвалы</button>
+          <button class="filter-btn" type="button" data-filter="truck">Тягачи</button>
+          <button class="filter-btn" type="button" data-filter="special">Спецтехника</button>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-btn active" type="button" data-task="all">Все задачи</button>
+          <button class="filter-btn" type="button" data-task="construction">Стройка</button>
+          <button class="filter-btn" type="button" data-task="quarry">Карьер</button>
+          <button class="filter-btn" type="button" data-task="route">Магистраль</button>
+          <button class="filter-btn" type="button" data-task="delivery">Доставка</button>
+          <button class="filter-btn" type="button" data-task="body">Надстройки</button>
+        </div>
+        <div class="catalog" id="catalogList"></div>
+      </div>
+    </section>
+
+    <section class="section" id="finance">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Финансовый сервис</div>
+            <h2 class="section-title">Быстрый расчет лизинга</h2>
+          </div>
+          <p class="section-subtitle">Оцените примерный ежемесячный платеж и отправьте заявку, чтобы получить точный расчет по выбранной модели.</p>
+        </div>
+        <div class="finance-grid">
+          <div class="finance-panel">
+            <h3>Параметры покупки</h3>
+            <p>Расчет предварительный. Точные условия зависят от программы финансирования и комплектации.</p>
+            <div class="calc">
+              <label>Стоимость техники
+                <input id="priceInput" type="number" min="1000000" step="100000" value="7800000">
+              </label>
+              <label>Первоначальный взнос, %
+                <input id="downInput" type="number" min="0" max="70" step="5" value="20">
+              </label>
+              <label>Срок, месяцев
+                <select id="termInput">
+                  <option value="24">24 месяца</option>
+                  <option value="36" selected>36 месяцев</option>
+                  <option value="48">48 месяцев</option>
+                  <option value="60">60 месяцев</option>
+                </select>
+              </label>
+              <div class="calc-result">
+                <span>Ориентировочный платеж</span>
+                <strong id="paymentResult">0 ₽</strong>
+              </div>
+              <a class="btn btn-primary" href="#lead-form" onclick="fillComment('Интересует расчет лизинга')">Отправить заявку</a>
+            </div>
+          </div>
+          <div class="finance-panel" id="process">
+            <h3>Как проходит покупка</h3>
+            <div class="steps">
+              <div class="step">
+                <div class="step-num">1</div>
+                <div>
+                  <strong>Заявка</strong>
+                  <p>Вы оставляете контакты и задачу: груз, сроки, регион, бюджет.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">2</div>
+                <div>
+                  <strong>Подбор</strong>
+                  <p>Менеджер предлагает подходящие модели и комплектации.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">3</div>
+                <div>
+                  <strong>Расчет</strong>
+                  <p>Согласуем цену, лизинг, документы и условия поставки.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="step-num">4</div>
+                <div>
+                  <strong>Передача</strong>
+                  <p>Организуем оформление и передачу техники клиенту.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="stock-preview">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">В наличии</div>
+            <h2 class="section-title">Быстрый старт сделки</h2>
+          </div>
+          <p class="section-subtitle">Отдельно вынесли модели, по которым можно быстрее запросить статус, комплектацию, КП и расчет.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card"><h3>Приоритетные модели</h3><p>65115, 6520, 5490, 54901, 53605 и 65117 доступны для быстрого запроса статуса.</p><p><a href="/pages/stock.html">Открыть в наличии</a></p></article>
+          <article class="case-card"><h3>Коммерческое предложение</h3><p>Для закупок можно сразу отправить компанию, ИНН, модель, телефон и email.</p><p><a href="/pages/quote.html">Получить КП</a></p></article>
+          <article class="case-card"><h3>Документы</h3><p>Подготовили отдельный список для ООО, ИП, лизинга, надстроек и передачи техники.</p><p><a href="/pages/documents.html">Список документов</a></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="tasks">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Задачи бизнеса</div>
+            <h2 class="section-title">Подбираем технику под реальную работу</h2>
+          </div>
+          <p class="section-subtitle">Не обязательно знать модель заранее. Достаточно описать груз, маршрут, условия эксплуатации и бюджет.</p>
+        </div>
+        <div class="task-grid">
+          <article class="task-card"><h3>Стройка и сыпучие грузы</h3><p>Самосвалы для песка, щебня, грунта, строительных площадок и подрядных работ.</p></article>
+          <article class="task-card"><h3>Дальние перевозки</h3><p>Тягачи для регулярных рейсов, автопарков и магистральной логистики.</p></article>
+          <article class="task-card"><h3>Шасси под надстройки</h3><p>База под цистерны, фургоны, коммунальную, монтажную и сервисную технику.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="selection-quiz">
+      <div class="section-inner quiz-layout">
+        <div class="quiz-panel">
+          <div class="section-kicker">Быстрый подбор</div>
+          <h2 class="section-title">Подобрать технику за 1 минуту</h2>
+          <p class="section-subtitle" style="margin-top:12px;">Выберите задачу, и сайт подскажет, с какой категории лучше начать. После этого можно сразу отправить заявку менеджеру.</p>
+          <div class="quiz-options" aria-label="Задача техники">
+            <button class="quiz-option active" type="button" data-result="Для стройки и сыпучих грузов чаще всего начинают с КАМАЗ 65115 или 6520. Если нужна техника нового поколения, стоит рассмотреть 6595." data-comment="Нужен подбор самосвала для стройки">Стройка</button>
+            <button class="quiz-option" type="button" data-result="Для карьеров и тяжелых маршрутов смотрим КАМАЗ 6520, 6595 или 6560. Важны покрытие, уклоны, груз и режим работы." data-comment="Нужен самосвал для карьера или тяжелых условий">Карьер</button>
+            <button class="quiz-option" type="button" data-result="Для дальних перевозок стоит сравнить КАМАЗ 5490 и 54901: важны маршрут, пробег, нагрузка и комфорт водителя." data-comment="Нужен подбор тягача для перевозок">Перевозки</button>
+            <button class="quiz-option" type="button" data-result="Для городской и региональной доставки можно рассмотреть КАМАЗ 4308, 5325 или 65117. Выбор зависит от груза и надстройки." data-comment="Нужен грузовик для доставки">Доставка</button>
+            <button class="quiz-option" type="button" data-result="Для надстроек подбирается шасси: 43118, 5350 или 53605. Важно понимать массу оборудования, габариты и режим работы." data-comment="Нужно шасси под надстройку">Надстройка</button>
+            <button class="quiz-option" type="button" data-result="Если задача смешанная, лучше начать с консультации. Менеджер предложит 2-3 варианта и объяснит разницу." data-comment="Нужна консультация по выбору техники">Не знаю</button>
+          </div>
+        </div>
+        <div class="quiz-result">
+          <h3>Рекомендация</h3>
+          <p id="quizResult">Для стройки и сыпучих грузов чаще всего начинают с КАМАЗ 65115 или 6520. Менеджер уточнит груз, плечо перевозки и условия площадки.</p>
+          <a class="btn btn-primary" href="#lead-form" onclick="fillComment('Нужен подбор самосвала для стройки')">Получить подбор</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="cases">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Кейсы</div>
+            <h2 class="section-title">Типовые ситуации клиентов</h2>
+          </div>
+          <p class="section-subtitle">Такие блоки помогают посетителю быстрее узнать свою задачу и оставить более точную заявку.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card"><h3>Подрядчик на стройке</h3><p>Нужен самосвал под ежедневные рейсы. Сравниваем 65115 и 6520, считаем лизинг и срок запуска.</p></article>
+          <article class="case-card"><h3>Расширение автопарка</h3><p>Компания добавляет тягач под новые маршруты. Смотрим пробег, расход, комфорт и график платежей.</p></article>
+          <article class="case-card"><h3>Шасси под проект</h3><p>Клиенту нужна база под надстройку. Уточняем массу оборудования, габариты и рабочую нагрузку.</p></article>
+          <article class="case-card"><h3>Реальные сценарии покупки</h3><p>Собрали отдельную страницу с отзывами: что клиенты отмечают после подбора, лизинга и поставки техники.</p><p><a href="/pages/reviews.html">Читать отзывы</a></p></article>
+        </div>
+        <div class="messenger-row">
+          <article class="messenger-card">
+            <h3>Быстрая связь</h3>
+            <p>Для срочных вопросов лучше написать или позвонить: пришлите модель, задачу и город.</p>
+            <div class="messenger-actions">
+              <a class="btn btn-primary" href="https://wa.me/79274191444" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn-outline" href="https://max.ru/" target="_blank" rel="noopener">MAX</a>
+            </div>
+          </article>
+          <article class="messenger-card">
+            <h3>Документы и КП</h3>
+            <p>Если нужно согласовать покупку с руководителем или закупками, подготовьте данные для коммерческого предложения.</p>
+            <div class="messenger-actions">
+              <a class="btn btn-outline" href="/pages/quote.html">Получить КП</a>
+              <a class="btn btn-outline" href="/pages/service.html">Сервис и оформление</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="vacancies">
+      <div class="section-inner">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Команда</div>
+            <h2 class="section-title">Работа в КамЦентр</h2>
+          </div>
+          <p class="section-subtitle">Вынесли вакансии в отдельную страницу: там подробно расписаны роли, задачи, требования, условия и порядок отклика.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-icon">01</div>
+            <h3>Открытые роли</h3>
+            <p>Менеджер по продажам, специалист по комплектациям и координатор заявок.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">02</div>
+            <h3>Подробные условия</h3>
+            <p>На странице вакансий указаны задачи, ожидания, формат работы и этапы собеседования.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">03</div>
+            <h3>Быстрый отклик</h3>
+            <p>Можно отправить форму прямо со страницы или связаться по телефону и почте.</p>
+          </article>
+          <article class="feature">
+            <div class="feature-icon">04</div>
+            <h3>Перейти к вакансиям</h3>
+            <p style="margin-bottom:18px;">Посмотрите подробное описание и выберите подходящее направление.</p>
+            <a class="btn btn-outline" href="/pages/vacancies.html">Открыть страницу</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section lead-band" id="lead-form">
+      <div class="section-inner lead-layout">
+        <div>
+          <div class="section-kicker">Заявка</div>
+          <h2 class="section-title" style="color:#fff;">Получить коммерческое предложение</h2>
+          <p class="section-subtitle" style="color:rgba(255,255,255,.78);">Оставьте контакты, и менеджер уточнит задачу, предложит подходящие варианты техники и рассчитает условия покупки.</p>
+          <ul class="lead-list">
+            <li>Подбор модели под реальную задачу</li>
+            <li>Ориентир по цене и лизинговому платежу</li>
+            <li>Консультация по комплектациям и поставке</li>
+          </ul>
+        </div>
+        <form class="lead-form" onsubmit="sendLead(event)">
+          <div class="form-row">
+            <label>Ваше имя
+              <input id="name" name="name" autocomplete="name" required placeholder="Иван">
+            </label>
+            <label>Телефон
+              <input id="phone" name="phone" autocomplete="tel" required placeholder="+7 ___ ___-__-__">
+            </label>
+          </div>
+          <div class="form-row" style="margin-top:12px;">
+            <label>Модель или тип техники
+              <select id="leadModel" name="model">
+                <option value="Не выбрано">Не выбрано</option>
+                <option>КАМАЗ 65115</option>
+                <option>КАМАЗ 6520</option>
+                <option>КАМАЗ 6595</option>
+                <option>КАМАЗ 6560</option>
+                <option>КАМАЗ 5490</option>
+                <option>КАМАЗ 54901</option>
+                <option>КАМАЗ 65117</option>
+                <option>КАМАЗ 5325</option>
+                <option>КАМАЗ 4308</option>
+                <option>КАМАЗ 43118</option>
+                <option>КАМАЗ 5350</option>
+                <option>КАМАЗ 53605</option>
+                <option>Нужен подбор</option>
+              </select>
+            </label>
+            <label>Город поставки
+              <input id="city" name="city" placeholder="Казань">
+            </label>
+          </div>
+          <div class="form-row" style="margin-top:12px;">
+            <label>Удобная связь
+              <select id="contactMethod" name="contactMethod">
+                <option>Телефон</option>
+                <option>WhatsApp</option>
+                <option>MAX</option>
+                <option>Почта</option>
+              </select>
+            </label>
+            <label>Срочность
+              <select id="urgency" name="urgency">
+                <option>Планирую покупку</option>
+                <option>Нужно в ближайшее время</option>
+                <option>Нужен срочный расчет</option>
+                <option>Сравниваю варианты</option>
+              </select>
+            </label>
+          </div>
+          <label style="margin-top:12px;">Что нужно подобрать
+            <textarea id="comment" name="comment">Интересует техника КАМАЗ</textarea>
+          </label>
+          <button class="btn btn-primary" type="submit" style="width:100%; margin-top:14px;">Отправить заявку</button>
+          <div class="notice" id="formNotice" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacts">
+    <div class="section-inner">
+      <div class="footer-grid">
+        <div>
+          <h3>КамЦентр</h3>
+          <p>Проект ООО "МеталлМаш" по подбору и продаже техники КАМАЗ.</p>
+          <p><a href="/pages/catalog.html">Каталог техники</a></p>
+          <p><a href="/pages/stock.html">Техника в наличии</a></p>
+          <p><a href="/pages/offers.html">Акции и спецпредложения</a></p>
+        </div>
+        <div>
+          <h3>Контакты</h3>
+          <p><a href="tel:+79274191444">+7 (927) 419-14-44</a></p>
+          <p><a href="mailto:energa432@mail.ru">energa432@mail.ru</a></p>
+        </div>
+        <div>
+          <h3>Реквизиты</h3>
+          <p>ООО "МеталлМаш"</p>
+          <p>ИНН 1650450440</p>
+          <p><a href="/pages/documents.html">Документы для сделки</a></p>
+          <p><a href="/pages/quote.html">Получить КП</a></p>
+          <p><a href="/pages/faq.html">Вопросы и ответы</a></p>
+          <p><a href="/pages/reviews.html">Отзывы клиентов</a></p>
+        </div>
+      </div>
+      <div style="margin-top:22px; padding-top:18px; border-top:1px solid rgba(255,255,255,.12);">
+        <a class="btn btn-outline" href="/admin.html" style="border-color:rgba(255,255,255,.28); color:#fff; background:rgba(255,255,255,.08);">Вход для администратора</a>
+      </div>
+      <div class="copyright">© 2026 ООО "МеталлМаш" - проект КамЦентр</div>
+    </div>
+  </footer>
+
+  <div class="floating-contact">
+    <a class="btn btn-outline" href="tel:+79274191444">Позвонить</a>
+    <a class="btn btn-outline" href="https://wa.me/79274191444" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-outline" href="https://max.ru/" target="_blank" rel="noopener">MAX</a>
+    <a class="btn btn-primary" href="#lead-form">Оставить заявку</a>
+  </div>
+
+  <script>
+    let vehicles = [
+      {
+        category: "dump",
+        type: "Самосвал",
+        title: "КАМАЗ 65115",
+        image: "/images/dump/65115-6056-48/1 (1).jpg",
+        page: "/pages/65115.html",
+        description: "Практичный самосвал для стройки, городских задач и перевозки сыпучих материалов.",
+        price: 7800000,
+        specs: ["6x4", "до 15 т", "Стройка", "В наличии"],
+        color: "#0a56a8"
+      },
+      {
+        category: "dump",
+        type: "Самосвал",
+        title: "КАМАЗ 6520",
+        image: "/images/dump/6520-49 (B5)/1 (1).jpg",
+        page: "/pages/6520.html",
+        description: "Усиленная модель для карьеров, тяжелых объектов и интенсивной перевозки сыпучих грузов.",
+        price: 9700000,
+        specs: ["6x4", "до 20 т", "Карьер", "Расчет"],
+        color: "#c9252d"
+      },
+      {
+        category: "dump",
+        type: "Самосвал",
+        title: "КАМАЗ 6595",
+        image: "/images/dump/6520-49 (B5)/1 (1).jpg",
+        page: "/pages/6595.html",
+        description: "Современный самосвал для компаний, которым нужна производительность и запас по ресурсу.",
+        price: 0,
+        specs: ["6x4", "Новый парк", "Интенсив", "КП"],
+        color: "#0a56a8"
+      },
+      {
+        category: "dump",
+        type: "Самосвал",
+        title: "КАМАЗ 6560",
+        image: "/images/dump/6520-49 (B5)/1 (1).jpg",
+        page: "/pages/6560.html",
+        description: "Самосвал для сложных дорог, промышленных площадок и маршрутов с повышенными требованиями.",
+        price: 0,
+        specs: ["8x8", "Проходимость", "Тяжелые условия", "Подбор"],
+        color: "#344054"
+      },
+      {
+        category: "truck",
+        type: "Тягач",
+        title: "КАМАЗ 5490",
+        image: "/images/truck/5490/1 (1).jpg",
+        page: "/pages/5490.html",
+        description: "Магистральный тягач для регулярных перевозок и работы в составе автопарка.",
+        price: 9200000,
+        specs: ["4x2", "Магистраль", "Лизинг", "Под заказ"],
+        color: "#13795b"
+      },
+      {
+        category: "truck",
+        type: "Тягач",
+        title: "КАМАЗ 54901",
+        image: "/images/truck/54901-70014-CA/1 (1).jpg",
+        page: "/pages/54901.html",
+        description: "Современный тягач для дальних маршрутов, где важны ресурс, комфорт и экономика рейса.",
+        price: 11800000,
+        specs: ["4x2", "Дальний рейс", "Парк", "КП"],
+        color: "#073b76"
+      },
+      {
+        category: "truck",
+        type: "Бортовой",
+        title: "КАМАЗ 65117",
+        image: "/images/truck/65117/1200x900.jpg",
+        page: "/pages/65117.html",
+        description: "Универсальный бортовой автомобиль для материалов, оборудования и установки КМУ.",
+        price: 0,
+        specs: ["6x4", "Борт", "КМУ", "Стройка"],
+        color: "#13795b"
+      },
+      {
+        category: "truck",
+        type: "Среднетоннажный",
+        title: "КАМАЗ 4308",
+        image: "/images/truck/4308/1200x900 (1).jpg",
+        page: "/pages/4308.html",
+        description: "Компактный грузовик для доставки, сервисных задач и ежедневной работы в городе.",
+        price: 0,
+        specs: ["4x2", "Город", "Доставка", "Фургон"],
+        color: "#b7791f"
+      },
+      {
+        category: "truck",
+        type: "Среднетоннажный",
+        title: "КАМАЗ 5325",
+        image: "/images/truck/5325/1200x900.jpg",
+        page: "/pages/5325.html",
+        description: "Грузовик для городской и региональной доставки, где важны маневренность и полезная нагрузка.",
+        price: 0,
+        specs: ["4x2", "Регион", "Доставка", "Надстройки"],
+        color: "#b7791f"
+      },
+      {
+        category: "special",
+        type: "Шасси",
+        title: "КАМАЗ 43118",
+        image: "/images/special/43118/1200x900.jpg",
+        page: "/pages/43118.html",
+        description: "Полноприводное шасси под спецтехнику, сервисные установки и работу в сложных условиях.",
+        price: 0,
+        specs: ["6x6", "Шасси", "Вездеход", "Надстройки"],
+        color: "#344054"
+      },
+      {
+        category: "special",
+        type: "Шасси",
+        title: "КАМАЗ 5350",
+        image: "/images/special/5350/1200x900.jpg",
+        page: "/pages/5350.html",
+        description: "Шасси для вахтовых решений, спецнадстроек и объектов с плохими дорогами.",
+        price: 0,
+        specs: ["6x6", "Вахта", "Спецзадачи", "Подбор"],
+        color: "#0a56a8"
+      },
+      {
+        category: "special",
+        type: "Шасси",
+        title: "КАМАЗ 53605",
+        image: "/images/truck/53605-6010-48/1200x900.jpg",
+        page: "/pages/53605.html",
+        description: "Городское шасси под коммунальную, сервисную, монтажную и доставочную технику.",
+        price: 6900000,
+        specs: ["4x2", "Шасси", "Надстройки", "B2B"],
+        color: "#344054"
+      }
+    ];
+
+    const vehicleDetails = {
+      "КАМАЗ 65115": {
+        badges: ["Хит для стройки", "Самосвал 6x4"],
+        highlight: "Берут, когда нужен понятный рабочий самосвал без лишней сложности: песок, щебень, грунт, ежедневные рейсы по объектам.",
+        payload: "до 15 т",
+        bestFor: "строительные компании, благоустройство, поставщики сыпучих материалов",
+        useCases: ["перевозка песка, щебня и грунта", "работа на городских и пригородных объектах", "быстрый запуск техники в работу"]
+      },
+      "КАМАЗ 6520": {
+        badges: ["Тяжелые рейсы", "до 20 т"],
+        highlight: "Подходит для плотного графика и серьезной нагрузки, когда обычного самосвала уже мало.",
+        payload: "до 20 т",
+        bestFor: "карьеры, крупные стройки, подрядчики с высокой загрузкой",
+        useCases: ["перевозка больших объемов сыпучих грузов", "работа на карьерах и промышленных площадках", "маршруты с повышенной нагрузкой"]
+      },
+      "КАМАЗ 6595": {
+        badges: ["Новое поколение", "Производительность"],
+        highlight: "Вариант для обновления парка, когда важны ресурс, современная кабина и стабильная работа каждый день.",
+        payload: "по комплектации",
+        bestFor: "компании, которые покупают технику на долгий срок",
+        useCases: ["интенсивная работа на объектах", "обновление автопарка", "регулярная перевозка сыпучих материалов"]
+      },
+      "КАМАЗ 6560": {
+        badges: ["8x8", "Сложные дороги"],
+        highlight: "Нужен там, где важны проходимость и запас прочности: удаленные объекты, тяжелые маршруты, слабые дороги.",
+        payload: "по задаче",
+        bestFor: "промышленные площадки, удаленные объекты, сложные маршруты",
+        useCases: ["работа вне дорог общего пользования", "перевозки в тяжелых условиях", "объекты с сезонными ограничениями"]
+      },
+      "КАМАЗ 5490": {
+        badges: ["Магистраль", "Лизинг"],
+        highlight: "Практичный тягач для регулярных перевозок, когда нужно усилить парк без переплаты за лишние опции.",
+        payload: "седельный тягач",
+        bestFor: "логистика, междугородние рейсы, транспортные компании",
+        useCases: ["работа с полуприцепом", "междугородние маршруты", "расширение действующего автопарка"]
+      },
+      "КАМАЗ 54901": {
+        badges: ["Дальний рейс", "Комфорт"],
+        highlight: "Более современный тягач для дальних маршрутов: комфорт водителя, ресурс и имидж автопарка.",
+        payload: "седельный тягач",
+        bestFor: "дальние перевозки, крупные автопарки, обновление тягачей",
+        useCases: ["дальнемагистральные перевозки", "рейсы с высокой загрузкой", "работа с современными полуприцепами"]
+      },
+      "КАМАЗ 65117": {
+        badges: ["Бортовой", "КМУ"],
+        highlight: "Универсальная платформа: можно перевозить материалы, оборудование и обсуждать установку манипулятора.",
+        payload: "борт/КМУ",
+        bestFor: "строители, сервисные бригады, поставщики материалов",
+        useCases: ["перевозка стройматериалов", "доставка оборудования", "работа с краном-манипулятором"]
+      },
+      "КАМАЗ 4308": {
+        badges: ["Город", "Доставка"],
+        highlight: "Компактный грузовик для ежедневной городской работы, когда крупная техника избыточна.",
+        payload: "средний тоннаж",
+        bestFor: "доставка, сервис, малый и средний бизнес",
+        useCases: ["городская доставка товаров", "сервисные выезды", "перевозка легких и средних грузов"]
+      },
+      "КАМАЗ 5325": {
+        badges: ["Регион", "Фургон/борт"],
+        highlight: "Хорошая база для региональной логистики и надстроек, где нужны маневренность и полезная нагрузка.",
+        payload: "по надстройке",
+        bestFor: "региональная доставка, торговые компании, производственные задачи",
+        useCases: ["перевозки между городами", "фургон или бортовая платформа", "ежедневная работа по маршрутам"]
+      },
+      "КАМАЗ 43118": {
+        badges: ["6x6", "Вездеход"],
+        highlight: "Полноприводное шасси для спецтехники и объектов, куда обычный грузовик не проходит.",
+        payload: "шасси 6x6",
+        bestFor: "спецнадстройки, нефтегаз, сервис удаленных объектов",
+        useCases: ["монтаж спецоборудования", "работа на сложных дорогах", "выездные сервисные установки"]
+      },
+      "КАМАЗ 5350": {
+        badges: ["Вахта", "Спецзадачи"],
+        highlight: "База для вахтовых и специальных решений, когда важны проходимость и надежность в тяжелых условиях.",
+        payload: "шасси 6x6",
+        bestFor: "вахтовые перевозки, промышленность, спецслужбы и сервис",
+        useCases: ["вахтовые надстройки", "перевозки по плохим дорогам", "монтаж специального оборудования"]
+      },
+      "КАМАЗ 53605": {
+        badges: ["Шасси", "Надстройки"],
+        highlight: "Городская база под коммунальную, сервисную, монтажную или доставочную технику.",
+        payload: "шасси 4x2",
+        bestFor: "коммунальные службы, монтажные организации, сервисные компании",
+        useCases: ["коммунальная техника", "цистерна, фургон или сервисная установка", "городская эксплуатация"]
+      }
+    };
+
+    vehicles = vehicles.map(vehicle => ({
+      ...vehicle,
+      ...(vehicleDetails[vehicle.title] || {})
+    }));
+
+    const catalogList = document.getElementById("catalogList");
+    const formatter = new Intl.NumberFormat("ru-RU");
+    let activeCatalogFilter = "all";
+    let activeCatalogTask = "all";
+    function apiUrl(path) {
+      if (typeof window.kamazApiUrl === "function") {
+        return window.kamazApiUrl(path);
+      }
+
+      if (window.location.port === "8780" && path.startsWith("/api/")) {
+        return `http://127.0.0.1:5000${path}`;
+      }
+
+      return path;
+    }
+
+    const taskFilters = {
+      construction: ["КАМАЗ 65115", "КАМАЗ 6520", "КАМАЗ 6595", "КАМАЗ 65117", "КАМАЗ 53605"],
+      quarry: ["КАМАЗ 6520", "КАМАЗ 6595", "КАМАЗ 6560"],
+      route: ["КАМАЗ 5490", "КАМАЗ 54901"],
+      delivery: ["КАМАЗ 4308", "КАМАЗ 5325", "КАМАЗ 65117"],
+      body: ["КАМАЗ 43118", "КАМАЗ 5350", "КАМАЗ 53605", "КАМАЗ 65117", "КАМАЗ 5325"]
+    };
+
+    function truckSvg(color) {
+      return `
+        <svg viewBox="0 0 520 260" role="img" aria-label="Грузовая техника">
+          <rect x="42" y="142" width="330" height="52" rx="10" fill="${color}"></rect>
+          <path d="M374 116h76l46 48v30H374z" fill="#f8fafc"></path>
+          <path d="M395 132h46l25 28h-71z" fill="#a7c7e7"></path>
+          <rect x="70" y="92" width="212" height="82" rx="8" fill="${color}" opacity=".88"></rect>
+          <rect x="88" y="110" width="170" height="14" rx="7" fill="#ffffff" opacity=".36"></rect>
+          <circle cx="142" cy="202" r="34" fill="#172033"></circle>
+          <circle cx="142" cy="202" r="15" fill="#d7dde7"></circle>
+          <circle cx="410" cy="202" r="34" fill="#172033"></circle>
+          <circle cx="410" cy="202" r="15" fill="#d7dde7"></circle>
+          <rect x="30" y="196" width="482" height="8" rx="4" fill="#172033" opacity=".28"></rect>
+        </svg>
+      `;
+    }
+
+    function escapeHtml(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function normalizeVehicle(vehicle) {
+      const specs = Array.isArray(vehicle.specs)
+        ? vehicle.specs
+        : ["КАМАЗ", vehicle.category || "Техника", "Подбор", "Расчет"];
+
+      return {
+        category: vehicle.category || "special",
+        type: vehicle.type || vehicle.category || "Техника",
+        title: vehicle.title || "Техника КАМАЗ",
+        image: vehicle.image || "/images/truck/5490/1 (1).jpg",
+        page: vehicle.page || vehicle.page_url || "/pages/catalog.html",
+        description: vehicle.description || "Подберем комплектацию, условия покупки и поставку под вашу задачу.",
+        price: Number(vehicle.price) || 0,
+        specs,
+        color: vehicle.color || "#0a56a8"
+      };
+    }
+
+    function renderList(items, className) {
+      if (!Array.isArray(items) || items.length === 0) return "";
+      return `<ul class="${className}">${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+    }
+
+    function renderCatalog() {
+      const visible = vehicles.filter(vehicle => {
+        const categoryMatch = activeCatalogFilter === "all" || vehicle.category === activeCatalogFilter;
+        const taskMatch = activeCatalogTask === "all" || (taskFilters[activeCatalogTask] || []).includes(vehicle.title);
+        return categoryMatch && taskMatch;
+      });
+      catalogList.innerHTML = visible.map(vehicle => `
+        <article class="vehicle">
+          <div class="vehicle-visual">
+            <div class="vehicle-badges">
+              ${(vehicle.badges || []).map(badge => `<span class="vehicle-badge">${escapeHtml(badge)}</span>`).join("")}
+            </div>
+            <img src="${escapeHtml(vehicle.image)}" alt="${escapeHtml(vehicle.title)}" loading="lazy">
+          </div>
+          <div class="vehicle-body">
+            <span class="tag">${escapeHtml(vehicle.type)}</span>
+            <h3>${escapeHtml(vehicle.title)}</h3>
+            <p class="vehicle-lead">${escapeHtml(vehicle.description)}</p>
+            <div class="vehicle-highlight">${escapeHtml(vehicle.highlight || "Подберем комплектацию, условия покупки и поставку под вашу задачу.")}</div>
+            <div class="vehicle-info">
+              <div><span>Нагрузка</span><strong>${escapeHtml(vehicle.payload || "по комплектации")}</strong></div>
+              <div><span>Кому подходит</span><strong>${escapeHtml(vehicle.bestFor || "бизнесу и автопаркам")}</strong></div>
+            </div>
+            ${renderList(vehicle.useCases, "vehicle-use")}
+            <div class="specs">
+              ${vehicle.specs.map(spec => `<span>${escapeHtml(spec)}</span>`).join("")}
+            </div>
+            <div class="price">${vehicle.price ? `от ${formatter.format(vehicle.price)} ₽` : "цена по запросу"}</div>
+            <div class="vehicle-actions">
+              <a class="btn btn-outline" href="${escapeHtml(vehicle.page || "/pages/catalog.html")}">Подробнее</a>
+              <button class="btn btn-outline vehicle-request" type="button" data-title="${escapeHtml(vehicle.title)}">Запросить предложение</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    async function loadVehiclesFromApi() {
+      try {
+        const response = await fetch(apiUrl("/api/vehicles"));
+        if (!response.ok) return;
+
+        const payload = await response.json();
+        const apiVehicles = Array.isArray(payload.data) ? payload.data.map(normalizeVehicle) : [];
+        if (apiVehicles.length > 0) {
+          const mergedVehicles = [...vehicles];
+          apiVehicles.forEach(apiVehicle => {
+            const existingIndex = mergedVehicles.findIndex(vehicle => vehicle.title === apiVehicle.title);
+            if (existingIndex >= 0) {
+              mergedVehicles[existingIndex] = {
+                ...mergedVehicles[existingIndex],
+                ...apiVehicle,
+                page: apiVehicle.page || apiVehicle.page_url || mergedVehicles[existingIndex].page
+              };
+            } else {
+              mergedVehicles.push(apiVehicle);
+            }
+          });
+          vehicles = mergedVehicles;
+          renderCatalog();
+        }
+      } catch (error) {
+        console.warn("Catalog API is not available, static catalog is shown.", error);
+      }
+    }
+
+    function toggleMenu() {
+      document.getElementById("mobileMenu").classList.toggle("open");
+    }
+
+    function fillComment(text) {
+      document.getElementById("comment").value = text;
+      document.getElementById("lead-form").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function calculatePayment() {
+      const price = Number(document.getElementById("priceInput").value || 0);
+      const down = Number(document.getElementById("downInput").value || 0);
+      const term = Number(document.getElementById("termInput").value || 36);
+      const financed = price * (1 - down / 100);
+      const rate = 0.17 / 12;
+      const payment = financed * (rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
+      document.getElementById("paymentResult").textContent = `${formatter.format(Math.round(payment))} ₽`;
+    }
+
+    async function sendLead(event) {
+      event.preventDefault();
+      const notice = document.getElementById("formNotice");
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const comment = document.getElementById("comment").value.trim();
+      const model = document.getElementById("leadModel").value;
+      const city = document.getElementById("city").value.trim() || "не указан";
+      const contactMethod = document.getElementById("contactMethod").value;
+      const urgency = document.getElementById("urgency").value;
+      notice.classList.remove("error");
+      if (!name || !phone) {
+        notice.classList.add("error");
+        notice.textContent = "Введите имя и телефон.";
+        return;
+      }
+
+      notice.textContent = "Отправляем заявку...";
+
+      try {
+        const response = await fetch(apiUrl("/api/leads"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            phone,
+            comment: [
+              `Модель/тип: ${model}`,
+              `Город: ${city}`,
+              `Связь: ${contactMethod}`,
+              `Срочность: ${urgency}`,
+              `Комментарий: ${comment}`
+            ].join("\n")
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error("Lead request failed");
+        }
+
+        notice.textContent = "Заявка отправлена. Менеджер скоро свяжется с вами.";
+        event.target.reset();
+        document.getElementById("comment").value = "Интересует техника КАМАЗ";
+      } catch (error) {
+        notice.classList.add("error");
+        notice.textContent = "Не удалось отправить заявку. Позвоните нам или попробуйте позже.";
+      }
+    }
+
+    const storedLeadModel = sessionStorage.getItem("kamazLeadModel");
+    if (storedLeadModel) {
+      const modelSelect = document.getElementById("leadModel");
+      const option = [...modelSelect.options].find(item => item.textContent === storedLeadModel);
+      if (option) {
+        modelSelect.value = storedLeadModel;
+        document.getElementById("comment").value = `Интересует ${storedLeadModel}`;
+      }
+      sessionStorage.removeItem("kamazLeadModel");
+    }
+
+    document.querySelectorAll("[data-filter]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-filter]").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        activeCatalogFilter = button.dataset.filter;
+        renderCatalog();
+      });
+    });
+
+    document.querySelectorAll("[data-task]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-task]").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        activeCatalogTask = button.dataset.task;
+        renderCatalog();
+      });
+    });
+
+    document.querySelectorAll(".quiz-option").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".quiz-option").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        document.getElementById("quizResult").textContent = button.dataset.result;
+        const link = document.querySelector(".quiz-result .btn");
+        link.setAttribute("onclick", `fillComment('${button.dataset.comment}')`);
+      });
+    });
+
+    catalogList.addEventListener("click", event => {
+      const button = event.target.closest(".vehicle-request");
+      if (!button) return;
+      fillComment(`Интересует ${button.dataset.title}`);
+    });
+
+    ["priceInput", "downInput", "termInput"].forEach(id => {
+      document.getElementById(id).addEventListener("input", calculatePayment);
+    });
+
+    renderCatalog();
+    calculatePayment();
+    loadVehiclesFromApi();
+  </script>
+</body>
+</html>

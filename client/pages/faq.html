@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вопросы и ответы — КамЦентр</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
+  <style>
+    .hero { padding: 76px 0 54px; color: #fff; background: linear-gradient(90deg, rgba(8,18,35,.96), rgba(8,18,35,.7)), url("/images/truck/5490/1 (1).jpg") center/cover no-repeat; }
+    .inner { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .kicker { display: inline-block; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 8px; background: rgba(255,255,255,.1); font-size: 14px; font-weight: 900; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 18px 0; font-size: clamp(36px,5vw,58px); line-height: 1.04; }
+    .hero p { max-width: 680px; color: rgba(255,255,255,.84); font-size: 18px; line-height: 1.65; }
+    .section { padding: 64px 0; background: #f4f6f9; }
+    .faq-layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; align-items: start; }
+    .side, details, .cta { border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 10px 28px rgba(16,24,40,.06); }
+    .side { position: sticky; top: 86px; padding: 20px; }
+    .side a { display: block; padding: 10px 0; color: var(--blue-dark); font-weight: 900; text-decoration: none; }
+    .faq-group { margin-bottom: 28px; }
+    .faq-group h2 { margin: 0 0 14px; color: var(--ink); font-size: 30px; }
+    details { padding: 0 22px; margin-bottom: 12px; }
+    summary { cursor: pointer; padding: 18px 0; color: var(--blue-dark); font-size: 18px; font-weight: 900; }
+    details p { margin: 0 0 18px; color: var(--muted); line-height: 1.7; }
+    .cta { margin-top: 32px; padding: 28px; background: #08172d; color: #fff; }
+    .cta h2 { margin: 0 0 10px; color: #fff; }
+    .cta p { margin: 0 0 18px; color: rgba(255,255,255,.78); line-height: 1.65; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 18px; border-radius: 8px; text-decoration: none; font-weight: 900; background: var(--red); color: #fff; }
+    @media (max-width: 900px) { .faq-layout { display: block; } .side { position: static; margin-bottom: 18px; } }
+  </style>
+</head>
+<body>
+  <script>renderHeader()</script>
+  <main>
+    <section class="hero">
+      <div class="inner">
+        <div class="kicker">FAQ</div>
+        <h1>Ответы на вопросы перед покупкой КАМАЗ</h1>
+        <p>Собрали основные вопросы по подбору модели, лизингу, документам, доставке и оформлению. Если ответа нет — оставьте заявку, менеджер разберет вашу ситуацию отдельно.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="inner faq-layout">
+        <aside class="side">
+          <a href="#select">Подбор</a>
+          <a href="#leasing">Лизинг</a>
+          <a href="#docs">Документы</a>
+          <a href="#delivery">Доставка</a>
+          <a href="#service">После покупки</a>
+        </aside>
+
+        <div>
+          <div class="faq-group" id="select">
+            <h2>Подбор техники</h2>
+            <details open><summary>Как понять, какая модель нужна?</summary><p>Начните с задачи: что перевозите, какой вес, какие маршруты, есть ли плохие дороги, как часто техника будет работать. По этим данным можно сравнить самосвал, тягач, бортовой автомобиль или шасси.</p></details>
+            <details><summary>Можно ли подобрать технику без точной модели?</summary><p>Да. Достаточно описать работу: стройка, карьер, доставка, межгород, надстройка или сервисные задачи. Менеджер предложит несколько подходящих вариантов.</p></details>
+            <details><summary>Почему лучше сравнивать несколько моделей?</summary><p>Иногда более дорогая модель выгоднее в работе из-за запаса по нагрузке или условий эксплуатации. А иногда наоборот можно не переплачивать за лишние возможности.</p></details>
+          </div>
+
+          <div class="faq-group" id="leasing">
+            <h2>Лизинг и оплата</h2>
+            <details open><summary>Можно ли купить КАМАЗ в лизинг?</summary><p>Да, можно подготовить первичный расчет: стоимость техники, первоначальный взнос, срок и ориентировочный ежемесячный платеж.</p></details>
+            <details><summary>Что влияет на платеж?</summary><p>Цена техники, аванс, срок договора, финансовая программа, юридический статус клиента и комплект документов.</p></details>
+            <details><summary>Можно ли заранее оценить нагрузку на бизнес?</summary><p>Да. На странице лизинга есть калькулятор, а менеджер может подготовить более точный расчет после уточнения модели и условий.</p></details>
+          </div>
+
+          <div class="faq-group" id="docs">
+            <h2>Документы и оформление</h2>
+            <details open><summary>Какие данные нужны для коммерческого предложения?</summary><p>Модель или задача, город, реквизиты компании, желаемая комплектация, формат оплаты и контакт ответственного человека.</p></details>
+            <details><summary>Можно ли получить КП для руководителя?</summary><p>Да. Подготовим понятный вариант с моделью, назначением, ценовым ориентиром и следующими шагами.</p></details>
+            <details><summary>Что делать, если техника нужна под надстройку?</summary><p>Нужно уточнить тип оборудования, массу, габариты и условия работы. После этого подбирается подходящее шасси.</p></details>
+          </div>
+
+          <div class="faq-group" id="delivery">
+            <h2>Доставка и передача</h2>
+            <details open><summary>Можно ли организовать поставку в другой регион?</summary><p>Да, условия передачи обсуждаются отдельно: город, сроки, формат получения и готовность документов.</p></details>
+            <details><summary>От чего зависят сроки?</summary><p>От наличия техники, комплектации, готовности документов, способа оплаты и логистики.</p></details>
+          </div>
+
+          <div class="faq-group" id="service">
+            <h2>После покупки</h2>
+            <details open><summary>Можно ли обратиться повторно при расширении парка?</summary><p>Да. Если уже понятны маршруты и экономика первой машины, проще подобрать следующую модель или комплектацию.</p></details>
+            <details><summary>Поможете разобраться с эксплуатацией?</summary><p>Мы подскажем, на что обратить внимание при выборе модели и какие вопросы заранее обсудить по сервису, надстройке и режиму работы.</p></details>
+          </div>
+
+          <div class="cta">
+            <h2>Не нашли ответ?</h2>
+            <p>Опишите задачу в заявке, и менеджер ответит по вашей модели, лизингу, документам или поставке.</p>
+            <a class="btn" href="/index.html#lead-form">Задать вопрос</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>renderFooter()</script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+:root {
+  --ink: #111827;
+  --muted: #5b6472;
+  --line: #d7dde7;
+  --paper: #ffffff;
+  --soft: #f4f6f9;
+  --blue: #0a56a8;
+  --blue-dark: #073b76;
+  --red: #c9252d;
+  --green: #13795b;
+  --shadow: 0 18px 48px rgba(16, 24, 40, .12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 !important;
+  color: var(--ink) !important;
+  background: var(--soft) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+}
+
+.header {
+  position: sticky !important;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  min-height: 76px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 22px !important;
+  padding: 0 max(20px, calc((100vw - 1180px) / 2)) !important;
+  border-bottom: 1px solid var(--line) !important;
+  background: rgba(255, 255, 255, .94) !important;
+  backdrop-filter: blur(14px);
+  box-shadow: none !important;
+}
+
+.logo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 12px;
+  color: var(--blue-dark) !important;
+  font-size: 19px !important;
+  font-weight: 900 !important;
+  letter-spacing: .02em;
+  text-decoration: none !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+a.logo::before {
+  content: "К";
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--blue), var(--red));
+  color: #fff;
+  font-weight: 900;
+}
+
+.nav {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 12px !important;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  color: #344054 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+}
+
+.nav a:hover {
+  color: var(--blue) !important;
+}
+
+.nav a::after {
+  display: none !important;
+}
+
+.menu-btn {
+  width: 44px;
+  height: 44px;
+  display: none;
+  border: 1px solid var(--line);
+  border-radius: 8px !important;
+  background: #fff !important;
+  color: var(--ink) !important;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.container,
+.product-page,
+.admin-page {
+  width: min(1180px, calc(100% - 32px)) !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 56px 0 !important;
+}
+
+.back {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 42px;
+  margin-bottom: 24px !important;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--blue-dark) !important;
+  font-weight: 900 !important;
+  text-decoration: none !important;
+}
+
+.product-title,
+.admin-title,
+.leasing-hero h1 {
+  max-width: 760px;
+  margin: 0 0 28px !important;
+  color: var(--ink) !important;
+  font-size: clamp(32px, 4vw, 50px) !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0;
+}
+
+.product-page::before,
+.admin-page::before {
+  content: "КамЦентр";
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--blue-dark);
+  font-size: 14px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.product-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, .9fr) !important;
+  gap: 24px !important;
+}
+
+.gallery,
+.info,
+.form,
+.advantages,
+.leasing-card,
+.leasing-info,
+.contact-box,
+.admin-panel,
+.stat-card,
+.card,
+.catalog-card,
+.vacancy-card,
+.benefit-card,
+.process-card,
+.contact-panel {
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  background: var(--paper) !important;
+  box-shadow: 0 8px 26px rgba(16, 24, 40, .06) !important;
+}
+
+.gallery {
+  padding: 16px !important;
+}
+
+.main-image img {
+  width: 100% !important;
+  height: clamp(300px, 44vw, 520px) !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+
+.thumbs {
+  gap: 10px !important;
+}
+
+.thumbs img {
+  height: 104px !important;
+  border-radius: 8px !important;
+}
+
+.info,
+.form {
+  padding: 24px !important;
+}
+
+.price {
+  color: var(--green) !important;
+  font-weight: 900 !important;
+}
+
+.spec,
+.specs span {
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+}
+
+.description,
+.leasing-info li,
+.leasing-card p,
+.contact-box p,
+.admin-subtitle {
+  color: var(--muted) !important;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 8px !important;
+  font: inherit;
+}
+
+button,
+.btn,
+.hero-btn,
+.tab-btn,
+.filter-btn,
+.form button,
+.contact-box a,
+.admin-actions button,
+.form-grid button {
+  border-radius: 8px !important;
+}
+
+.form button,
+.contact-box a,
+.admin-actions button,
+.form-grid button,
+button[type="submit"] {
+  background: var(--red) !important;
+  color: #fff !important;
+  font-weight: 900 !important;
+}
+
+.advantages {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  margin-top: 28px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.adv {
+  margin: 0 !important;
+  padding: 22px !important;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+}
+
+.leasing-hero {
+  min-height: 430px;
+  display: grid;
+  align-items: end;
+  padding: 0 !important;
+  text-align: left !important;
+  color: #fff;
+  border-bottom: 0 !important;
+  background:
+    linear-gradient(90deg, rgba(8, 18, 35, .96), rgba(8, 18, 35, .78), rgba(8, 18, 35, .36)),
+    url("/images/truck/5490/1 (1).jpg") center / cover no-repeat !important;
+}
+
+.leasing-hero > * {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.leasing-hero h1,
+.leasing-hero p {
+  width: min(1180px, calc(100% - 32px)) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.leasing-hero h1 {
+  margin-top: 96px !important;
+  color: #fff !important;
+}
+
+.leasing-hero p {
+  max-width: 720px !important;
+  margin: 0 0 56px !important;
+  color: rgba(255, 255, 255, .84) !important;
+}
+
+.leasing-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+}
+
+.leasing-card,
+.leasing-info,
+.contact-box {
+  padding: 24px !important;
+}
+
+.calc {
+  border-radius: 8px !important;
+  background: #08172d !important;
+  box-shadow: var(--shadow) !important;
+}
+
+.result {
+  border-radius: 8px !important;
+}
+
+.footer {
+  padding: 44px 0 24px !important;
+  background: #08172d !important;
+  color: #d7dde7 !important;
+}
+
+.footer-grid {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.footer h3 {
+  color: #fff !important;
+}
+
+.copyright {
+  width: min(1180px, calc(100% - 32px));
+  margin: 28px auto 0 !important;
+  color: rgba(255, 255, 255, .62) !important;
+}
+
+.legal-page {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.legal-card {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+}
+
+.legal-card h1 {
+  margin: 0 0 20px;
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 44px);
+}
+
+.legal-card p {
+  color: #344054;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .header {
+    min-height: auto;
+    padding: 16px !important;
+  }
+
+  .menu-btn {
+    display: block !important;
+  }
+
+  .nav {
+    position: absolute;
+    top: 72px;
+    left: 16px;
+    right: 16px;
+    display: none !important;
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 0 !important;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+
+  .nav.open {
+    display: flex !important;
+  }
+
+  .header:not(:has(.menu-btn)) {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .header:not(:has(.menu-btn)) .nav {
+    position: static;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px !important;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .header:not(:has(.menu-btn)) .nav a {
+    padding: 8px 0;
+    text-align: left;
+  }
+
+  .nav a {
+    padding: 13px;
+    text-align: center;
+  }
+
+  .product-layout,
+  .leasing-grid,
+  .advantages,
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

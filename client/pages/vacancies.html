@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вакансии — КамЦентр</title>
+
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/layout.js?v=5"></script>
+
+  <style>
+    :root {
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d7dde7;
+      --paper: #ffffff;
+      --soft: #f4f6f9;
+      --blue: #0a56a8;
+      --blue-dark: #073b76;
+      --red: #c9252d;
+      --green: #13795b;
+      --shadow: 0 18px 48px rgba(16, 24, 40, .12);
+    }
+
+    body {
+      background: var(--soft);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .vacancy-hero {
+      min-height: 430px;
+      display: grid;
+      align-items: end;
+      color: #fff;
+      background:
+        linear-gradient(90deg, rgba(8, 18, 35, .96), rgba(8, 18, 35, .78), rgba(8, 18, 35, .36)),
+        url("/images/truck/54901-70014-CA/1 (1).jpg") center / cover no-repeat;
+    }
+
+    .page-inner {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .vacancy-hero .page-inner {
+      padding: 84px 0 56px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .1);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 720px;
+      margin: 18px 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      color: rgba(255, 255, 255, .86);
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .page-section {
+      padding: 64px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 6px 0 0;
+      font-size: clamp(26px, 3vw, 40px);
+      color: var(--ink);
+    }
+
+    .section-head p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .tab-btn {
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--blue-dark);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      border-color: var(--blue);
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .vacancy-grid,
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .vacancy-card,
+    .benefit-card,
+    .process-card,
+    .contact-panel {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
+    }
+
+    .vacancy-card {
+      display: none;
+      overflow: hidden;
+    }
+
+    .vacancy-card.visible {
+      display: block;
+    }
+
+    .vacancy-top {
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, #fff, #f3f7fc);
+    }
+
+    .vacancy-top span {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: #e7f1ff;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .vacancy-top h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+      color: var(--ink);
+    }
+
+    .salary {
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .vacancy-body {
+      padding: 22px;
+    }
+
+    .vacancy-body h4 {
+      margin: 20px 0 8px;
+      color: var(--blue-dark);
+      font-size: 16px;
+    }
+
+    .vacancy-body ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #344054;
+      line-height: 1.7;
+    }
+
+    .benefit-card,
+    .process-card {
+      padding: 22px;
+    }
+
+    .benefit-card strong,
+    .process-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--blue-dark);
+      font-size: 18px;
+    }
+
+    .benefit-card p,
+    .process-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .step-num {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .contact-band {
+      background: #08172d;
+      color: #fff;
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .contact-panel {
+      padding: 24px;
+      color: var(--ink);
+    }
+
+    .contact-panel label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .contact-panel input,
+    .contact-panel textarea,
+    .contact-panel select {
+      width: 100%;
+      margin-top: 6px;
+      padding: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    .contact-panel textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 20px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .notice {
+      min-height: 24px;
+      margin-top: 12px;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .notice.error {
+      color: var(--red);
+    }
+
+    @media (max-width: 900px) {
+      .section-head,
+      .contact-layout {
+        display: block;
+      }
+
+      .vacancy-grid,
+      .benefit-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-panel {
+        margin-top: 24px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="/theme.css">
+</head>
+<body>
+  <script>renderHeader()</script>
+
+  <main>
+    <section class="vacancy-hero">
+      <div class="page-inner">
+        <div class="kicker">Работа в КамЦентр</div>
+        <h1>Вакансии для тех, кто понимает технику и любит результат</h1>
+        <p class="hero-copy">Мы продаем коммерческую технику КАМАЗ, сопровождаем клиентов от подбора модели до передачи машины и ищем людей, которые умеют разговаривать с бизнесом по делу.</p>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#fff;">Открытые роли</div>
+            <h2>Кого ищем сейчас</h2>
+          </div>
+          <p>Выберите направление. В каждой карточке расписаны задачи, требования, условия и кому подойдет вакансия.</p>
+        </div>
+
+        <div class="tabs" aria-label="Фильтр вакансий">
+          <button class="tab-btn active" type="button" data-filter="all">Все</button>
+          <button class="tab-btn" type="button" data-filter="sales">Продажи</button>
+          <button class="tab-btn" type="button" data-filter="tech">Техника</button>
+          <button class="tab-btn" type="button" data-filter="office">Офис</button>
+        </div>
+
+        <div class="vacancy-grid">
+          <article class="vacancy-card visible" data-category="sales">
+            <div class="vacancy-top">
+              <span>Продажи</span>
+              <h3>Менеджер по продажам техники</h3>
+              <div class="salary">Оклад + процент от сделки</div>
+            </div>
+            <div class="vacancy-body">
+              <p>Работа с входящими заявками, консультация клиентов и сопровождение покупки грузовой техники.</p>
+              <h4>Задачи</h4>
+              <ul>
+                <li>принимать заявки с сайта и по телефону;</li>
+                <li>уточнять задачу клиента и подбирать модель;</li>
+                <li>готовить коммерческие предложения;</li>
+                <li>вести клиента до оплаты и передачи техники.</li>
+              </ul>
+              <h4>Важно</h4>
+              <ul>
+                <li>грамотная речь и спокойная работа с клиентами;</li>
+                <li>интерес к коммерческой технике;</li>
+                <li>умение доводить сделки до результата.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="vacancy-card visible" data-category="tech">
+            <div class="vacancy-top">
+              <span>Техника</span>
+              <h3>Специалист по комплектациям</h3>
+              <div class="salary">Обсуждается по опыту</div>
+            </div>
+            <div class="vacancy-body">
+              <p>Помощь менеджерам и клиентам в подборе шасси, кузовов, надстроек и технических решений.</p>
+              <h4>Задачи</h4>
+              <ul>
+                <li>сравнивать модели КАМАЗ под задачу клиента;</li>
+                <li>проверять характеристики и совместимость надстроек;</li>
+                <li>подготовить понятные рекомендации для клиента;</li>
+                <li>участвовать в согласовании поставки.</li>
+              </ul>
+              <h4>Важно</h4>
+              <ul>
+                <li>понимание грузовой техники;</li>
+                <li>внимательность к деталям;</li>
+                <li>умение объяснять сложное простыми словами.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="vacancy-card visible" data-category="office">
+            <div class="vacancy-top">
+              <span>Офис</span>
+              <h3>Координатор заявок</h3>
+              <div class="salary">Фиксированный оклад</div>
+            </div>
+            <div class="vacancy-body">
+              <p>Административная поддержка продаж: порядок в заявках, документах и коммуникации с клиентами.</p>
+              <h4>Задачи</h4>
+              <ul>
+                <li>распределять обращения между менеджерами;</li>
+                <li>следить за статусами заявок;</li>
+                <li>готовить документы и счета;</li>
+                <li>напоминать команде о важных этапах сделки.</li>
+              </ul>
+              <h4>Важно</h4>
+              <ul>
+                <li>аккуратность и ответственность;</li>
+                <li>уверенная работа с таблицами и CRM;</li>
+                <li>готовность быстро разбираться в процессах.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" style="background:#fff;">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#f4f6f9;">Условия</div>
+            <h2>Что предлагаем</h2>
+          </div>
+          <p>Мы ценим самостоятельность, честную коммуникацию и желание разбираться в продукте глубже, чем «просто продать».</p>
+        </div>
+
+        <div class="benefit-grid">
+          <div class="benefit-card">
+            <strong>Понятный продукт</strong>
+            <p>КАМАЗ нужен строителям, перевозчикам и промышленным компаниям. Клиент приходит с реальной задачей, а не случайным интересом.</p>
+          </div>
+          <div class="benefit-card">
+            <strong>Поддержка в сделках</strong>
+            <p>Помогаем с расчетом, комплектациями, лизингом и документами, чтобы менеджер мог уверенно вести клиента.</p>
+          </div>
+          <div class="benefit-card">
+            <strong>Рост дохода</strong>
+            <p>В продажах действует мотивация от результата. Чем точнее работа с клиентом, тем выше итоговый доход.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="page-inner">
+        <div class="section-head">
+          <div>
+            <div class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#fff;">Отклик</div>
+            <h2>Как попасть в команду</h2>
+          </div>
+          <p>Процесс простой и прозрачный: сначала знакомимся, потом обсуждаем опыт, задачи и условия.</p>
+        </div>
+
+        <div class="process-grid">
+          <div class="process-card">
+            <div class="step-num">1</div>
+            <strong>Оставьте контакты</strong>
+            <p>Укажите вакансию, телефон и коротко расскажите о своем опыте.</p>
+          </div>
+          <div class="process-card">
+            <div class="step-num">2</div>
+            <strong>Первый разговор</strong>
+            <p>Уточним ожидания, график, опыт и интерес к технике.</p>
+          </div>
+          <div class="process-card">
+            <div class="step-num">3</div>
+            <strong>Собеседование</strong>
+            <p>Разберем реальные рабочие ситуации и формат взаимодействия.</p>
+          </div>
+          <div class="process-card">
+            <div class="step-num">4</div>
+            <strong>Старт</strong>
+            <p>Дадим вводную по продукту, процессам и текущим задачам.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section contact-band">
+      <div class="page-inner contact-layout">
+        <div>
+          <div class="kicker">Откликнуться</div>
+          <h2 style="font-size:clamp(28px,3vw,44px); margin:16px 0;">Расскажите, какая роль вам интересна</h2>
+          <p style="max-width:640px; color:rgba(255,255,255,.78); line-height:1.7;">Можно отправить форму или написать напрямую на почту. Если подходящей вакансии нет, все равно оставьте контакты — иногда нужные люди появляются раньше открытой позиции.</p>
+          <p style="margin-top:24px;"><a style="color:#fff; font-weight:900;" href="mailto:energa432@mail.ru">energa432@mail.ru</a></p>
+          <p><a style="color:#fff; font-weight:900;" href="tel:+79274191444">+7 (927) 419-14-44</a></p>
+        </div>
+
+        <form class="contact-panel" onsubmit="sendVacancyLead(event)">
+          <label>Ваше имя
+            <input id="vacancyName" required autocomplete="name" placeholder="Иван">
+          </label>
+          <label>Телефон
+            <input id="vacancyPhone" required autocomplete="tel" placeholder="+7 ___ ___-__-__">
+          </label>
+          <label>Интересная вакансия
+            <select id="vacancyRole">
+              <option>Менеджер по продажам техники</option>
+              <option>Специалист по комплектациям</option>
+              <option>Координатор заявок</option>
+              <option>Другая роль</option>
+            </select>
+          </label>
+          <label>Коротко об опыте
+            <textarea id="vacancyComment" placeholder="Опыт в продажах, технике, документах или работе с клиентами"></textarea>
+          </label>
+          <button class="btn" type="submit" style="width:100%;">Отправить отклик</button>
+          <div class="notice" id="vacancyNotice" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>renderFooter()</script>
+
+  <script>
+    document.querySelectorAll(".tab-btn").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab-btn").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+        document.querySelectorAll(".vacancy-card").forEach(card => {
+          card.classList.toggle("visible", filter === "all" || card.dataset.category === filter);
+        });
+      });
+    });
+
+    async function sendVacancyLead(event) {
+      event.preventDefault();
+
+      const notice = document.getElementById("vacancyNotice");
+      const name = document.getElementById("vacancyName").value.trim();
+      const phone = document.getElementById("vacancyPhone").value.trim();
+      const role = document.getElementById("vacancyRole").value;
+      const details = document.getElementById("vacancyComment").value.trim();
+
+      notice.classList.remove("error");
+
+      if (!name || !phone) {
+        notice.classList.add("error");
+        notice.textContent = "Введите имя и телефон.";
+        return;
+      }
+
+      notice.textContent = "Отправляем отклик...";
+
+      try {
+        const response = await fetch(window.kamazApiUrl("/api/leads"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            phone,
+            comment: `Отклик на вакансию: ${role}. ${details}`
+          })
+        });
+
+        if (!response.ok) throw new Error("Request failed");
+
+        notice.textContent = "Отклик отправлен. Мы свяжемся с вами.";
+        event.target.reset();
+      } catch (error) {
+        notice.classList.add("error");
+        notice.textContent = "Не удалось отправить через сайт. Позвоните или напишите на почту.";
+      }
+    }
+  </script>
+</body>
+</html>

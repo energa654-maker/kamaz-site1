@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сравнение моделей КАМАЗ — КамЦентр</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
+  <style>
+    .page-inner { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .hero { padding: 70px 0 42px; background: #08172d; color: #fff; }
+    .hero h1 { max-width: 760px; margin: 0 0 14px; font-size: clamp(34px,5vw,56px); line-height: 1.04; }
+    .hero p { max-width: 680px; color: rgba(255,255,255,.78); line-height: 1.7; }
+    .section { padding: 56px 0; }
+    .compare-table { width: 100%; border-collapse: collapse; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 8px 26px rgba(16,24,40,.06); }
+    .compare-table th, .compare-table td { padding: 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .compare-table th { background: #f4f6f9; color: var(--blue-dark); }
+    .compare-table tr:last-child td { border-bottom: 0; }
+    .btn { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: 12px 16px; border-radius: 8px; background: var(--red); color: #fff; text-decoration: none; font-weight: 900; }
+    @media (max-width: 850px) { .compare-table { display: block; overflow-x: auto; } }
+  </style>
+</head>
+<body>
+  <script>renderHeader()</script>
+  <main>
+    <section class="hero">
+      <div class="page-inner">
+        <h1>Сравнение популярных моделей КАМАЗ</h1>
+        <p>Таблица помогает быстро понять, какая техника ближе к задаче. Для точного подбора лучше оставить заявку и описать условия работы.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="page-inner">
+        <table class="compare-table">
+          <thead>
+            <tr><th>Модель</th><th>Тип</th><th>Основная задача</th><th>Когда выбирать</th><th>Страница</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>КАМАЗ 5490</td><td>Тягач</td><td>Магистральные перевозки</td><td>Нужен тягач для регулярных рейсов и автопарка.</td><td><a class="btn" href="/pages/5490.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 54901</td><td>Тягач</td><td>Дальние маршруты</td><td>Важны комфорт, ресурс и современная кабина.</td><td><a class="btn" href="/pages/54901.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 65115</td><td>Самосвал</td><td>Стройка и сыпучие грузы</td><td>Нужен практичный самосвал для регулярной работы.</td><td><a class="btn" href="/pages/65115.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 6520</td><td>Самосвал</td><td>Тяжелые условия</td><td>Нужна усиленная модель для карьеров и интенсивной эксплуатации.</td><td><a class="btn" href="/pages/6520.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 6595</td><td>Самосвал</td><td>Интенсивная работа</td><td>Нужен современный самосвал под высокий ежедневный объем.</td><td><a class="btn" href="/pages/6595.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 6560</td><td>Самосвал</td><td>Сложные дороги</td><td>Нужна высокая проходимость и запас для тяжелых маршрутов.</td><td><a class="btn" href="/pages/6560.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 65117</td><td>Бортовой</td><td>Материалы и оборудование</td><td>Нужна универсальная платформа, возможно с манипулятором.</td><td><a class="btn" href="/pages/65117.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 5325</td><td>Среднетоннажный</td><td>Город и регион</td><td>Нужна ежедневная доставка с маневренностью в городе.</td><td><a class="btn" href="/pages/5325.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 4308</td><td>Среднетоннажный</td><td>Доставка и сервис</td><td>Крупная техника избыточна, но нужен надежный рабочий грузовик.</td><td><a class="btn" href="/pages/4308.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 43118</td><td>Шасси</td><td>Спецтехника и бездорожье</td><td>Нужна база под надстройку для сложных условий.</td><td><a class="btn" href="/pages/43118.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 5350</td><td>Шасси</td><td>Вахта и спецзадачи</td><td>Нужны проходимость и гибкость под оборудование.</td><td><a class="btn" href="/pages/5350.html">Открыть</a></td></tr>
+            <tr><td>КАМАЗ 53605</td><td>Шасси</td><td>Коммунальные надстройки</td><td>Нужна городская база под фургон, цистерну или спецоборудование.</td><td><a class="btn" href="/pages/53605.html">Открыть</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script>renderFooter()</script>
+</body>
+</html>
