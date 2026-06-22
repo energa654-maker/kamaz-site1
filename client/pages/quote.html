@@ -3,42 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Получить коммерческое предложение — КамЦентр</title>
+  <title>РџРѕР»СѓС‡РёС‚СЊ РєРѕРјРјРµСЂС‡РµСЃРєРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ вЂ” РљР°РјР¦РµРЅС‚СЂ</title>
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/theme.css">
   <link rel="stylesheet" href="/site-section.css">
   <script src="/layout.js?v=5"></script>
   <style>.section-hero { --hero-image: url("/images/truck/4308/1200x900 (1).jpg"); }</style>
+  <script src="/api.js?v=postgres1"></script>
 </head>
 <body>
   <script>renderHeader()</script>
   <main>
     <section class="section-hero">
       <div class="inner hero-content">
-        <div class="kicker">Коммерческое предложение</div>
-        <h1>Получите КП на технику КАМАЗ для руководителя или закупок</h1>
-        <p>Укажите компанию, модель, город и контакты. Менеджер подготовит понятный вариант с условиями и следующими шагами.</p>
+        <div class="kicker">РљРѕРјРјРµСЂС‡РµСЃРєРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ</div>
+        <h1>РџРѕР»СѓС‡РёС‚Рµ РљРџ РЅР° С‚РµС…РЅРёРєСѓ РљРђРњРђР— РґР»СЏ СЂСѓРєРѕРІРѕРґРёС‚РµР»СЏ РёР»Рё Р·Р°РєСѓРїРѕРє</h1>
+        <p>РЈРєР°Р¶РёС‚Рµ РєРѕРјРїР°РЅРёСЋ, РјРѕРґРµР»СЊ, РіРѕСЂРѕРґ Рё РєРѕРЅС‚Р°РєС‚С‹. РњРµРЅРµРґР¶РµСЂ РїРѕРґРіРѕС‚РѕРІРёС‚ РїРѕРЅСЏС‚РЅС‹Р№ РІР°СЂРёР°РЅС‚ СЃ СѓСЃР»РѕРІРёСЏРјРё Рё СЃР»РµРґСѓСЋС‰РёРјРё С€Р°РіР°РјРё.</p>
       </div>
     </section>
     <section class="section soft">
       <div class="inner grid grid-2">
         <form class="panel form-panel" onsubmit="sendQuote(event)">
           <div class="form-grid">
-            <label>Компания или ИП<input id="company" required placeholder="ООО Ромашка"></label>
-            <label>ИНН<input id="inn" placeholder="1650..."></label>
-            <label>Ваше имя<input id="name" required placeholder="Иван"></label>
-            <label>Телефон<input id="phone" required placeholder="+7 ___ ___-__-__"></label>
+            <label>РљРѕРјРїР°РЅРёСЏ РёР»Рё РРџ<input id="company" required placeholder="РћРћРћ Р РѕРјР°С€РєР°"></label>
+            <label>РРќРќ<input id="inn" placeholder="1650..."></label>
+            <label>Р’Р°С€Рµ РёРјСЏ<input id="name" required placeholder="РРІР°РЅ"></label>
+            <label>РўРµР»РµС„РѕРЅ<input id="phone" required placeholder="+7 ___ ___-__-__"></label>
             <label>Email<input id="email" type="email" placeholder="mail@example.ru"></label>
-            <label>Модель<select id="model"><option>Нужен подбор</option><option>КАМАЗ 65115</option><option>КАМАЗ 6520</option><option>КАМАЗ 5490</option><option>КАМАЗ 54901</option><option>КАМАЗ 43118</option><option>КАМАЗ 53605</option></select></label>
+            <label>РњРѕРґРµР»СЊ<select id="model"><option>РќСѓР¶РµРЅ РїРѕРґР±РѕСЂ</option><option>РљРђРњРђР— 65115</option><option>РљРђРњРђР— 6520</option><option>РљРђРњРђР— 5490</option><option>РљРђРњРђР— 54901</option><option>РљРђРњРђР— 43118</option><option>РљРђРњРђР— 53605</option></select></label>
           </div>
-          <label style="margin-top:14px;">Комментарий<textarea id="comment">Нужно коммерческое предложение</textarea></label>
-          <button class="btn btn-primary" type="submit" style="width:100%; margin-top:14px;">Отправить запрос КП</button>
+          <label style="margin-top:14px;">РљРѕРјРјРµРЅС‚Р°СЂРёР№<textarea id="comment">РќСѓР¶РЅРѕ РєРѕРјРјРµСЂС‡РµСЃРєРѕРµ РїСЂРµРґР»РѕР¶РµРЅРёРµ</textarea></label>
+          <button class="btn btn-primary" type="submit" style="width:100%; margin-top:14px;">РћС‚РїСЂР°РІРёС‚СЊ Р·Р°РїСЂРѕСЃ РљРџ</button>
           <div class="result-box" id="notice" style="display:none;"></div>
         </form>
         <article class="card">
-          <h3>Что включить в КП</h3>
-          <p>Чтобы предложение получилось полезным, укажите город, срок покупки, формат оплаты и что техника должна делать в работе.</p>
-          <ul><li>модель и назначение</li><li>ориентир по цене</li><li>лизинг или покупка</li><li>документы и следующий шаг</li></ul>
+          <h3>Р§С‚Рѕ РІРєР»СЋС‡РёС‚СЊ РІ РљРџ</h3>
+          <p>Р§С‚РѕР±С‹ РїСЂРµРґР»РѕР¶РµРЅРёРµ РїРѕР»СѓС‡РёР»РѕСЃСЊ РїРѕР»РµР·РЅС‹Рј, СѓРєР°Р¶РёС‚Рµ РіРѕСЂРѕРґ, СЃСЂРѕРє РїРѕРєСѓРїРєРё, С„РѕСЂРјР°С‚ РѕРїР»Р°С‚С‹ Рё С‡С‚Рѕ С‚РµС…РЅРёРєР° РґРѕР»Р¶РЅР° РґРµР»Р°С‚СЊ РІ СЂР°Р±РѕС‚Рµ.</p>
+          <ul><li>РјРѕРґРµР»СЊ Рё РЅР°Р·РЅР°С‡РµРЅРёРµ</li><li>РѕСЂРёРµРЅС‚РёСЂ РїРѕ С†РµРЅРµ</li><li>Р»РёР·РёРЅРі РёР»Рё РїРѕРєСѓРїРєР°</li><li>РґРѕРєСѓРјРµРЅС‚С‹ Рё СЃР»РµРґСѓСЋС‰РёР№ С€Р°Рі</li></ul>
         </article>
       </div>
     </section>
@@ -50,21 +51,21 @@
       const select = document.getElementById("model");
       const option = [...select.options].find(item => item.textContent === stored);
       if (option) select.value = stored;
-      document.getElementById("comment").value = `Нужно КП на ${stored}`;
+      document.getElementById("comment").value = `РќСѓР¶РЅРѕ РљРџ РЅР° ${stored}`;
       sessionStorage.removeItem("kamazLeadModel");
     }
     async function sendQuote(event) {
       event.preventDefault();
       const notice = document.getElementById("notice");
       notice.style.display = "block";
-      notice.textContent = "Отправляем запрос...";
+      notice.textContent = "РћС‚РїСЂР°РІР»СЏРµРј Р·Р°РїСЂРѕСЃ...";
       const comment = [
-        "Запрос КП",
-        `Компания: ${document.getElementById("company").value}`,
-        `ИНН: ${document.getElementById("inn").value || "не указан"}`,
-        `Email: ${document.getElementById("email").value || "не указан"}`,
-        `Модель: ${document.getElementById("model").value}`,
-        `Комментарий: ${document.getElementById("comment").value}`
+        "Р—Р°РїСЂРѕСЃ РљРџ",
+        `РљРѕРјРїР°РЅРёСЏ: ${document.getElementById("company").value}`,
+        `РРќРќ: ${document.getElementById("inn").value || "РЅРµ СѓРєР°Р·Р°РЅ"}`,
+        `Email: ${document.getElementById("email").value || "РЅРµ СѓРєР°Р·Р°РЅ"}`,
+        `РњРѕРґРµР»СЊ: ${document.getElementById("model").value}`,
+        `РљРѕРјРјРµРЅС‚Р°СЂРёР№: ${document.getElementById("comment").value}`
       ].join("\\n");
       try {
         const response = await fetch(window.kamazApiUrl("/api/leads"), {
@@ -77,12 +78,13 @@
           })
         });
         if (!response.ok) throw new Error("request failed");
-        notice.innerHTML = "<strong>Запрос отправлен</strong>Менеджер подготовит КП и свяжется с вами.";
+        notice.innerHTML = "<strong>Р—Р°РїСЂРѕСЃ РѕС‚РїСЂР°РІР»РµРЅ</strong>РњРµРЅРµРґР¶РµСЂ РїРѕРґРіРѕС‚РѕРІРёС‚ РљРџ Рё СЃРІСЏР¶РµС‚СЃСЏ СЃ РІР°РјРё.";
         event.target.reset();
       } catch (error) {
-        notice.innerHTML = "<strong>Не удалось отправить</strong>Позвоните нам или попробуйте позже.";
+        notice.innerHTML = "<strong>РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ</strong>РџРѕР·РІРѕРЅРёС‚Рµ РЅР°Рј РёР»Рё РїРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕР·Р¶Рµ.";
       }
     }
   </script>
 </body>
 </html>
+
