@@ -5,7 +5,7 @@
   color: #fff;
   background:
     linear-gradient(90deg, rgba(8,18,35,.96), rgba(8,18,35,.7)),
-    var(--hero-image, url("/images/truck/54901-70014-CA/1 (1).jpg")) center/cover no-repeat;
+    var(--hero-image, url("/images/special/43118/1200x900.jpg")) center/cover no-repeat;
 }
 
 .inner {

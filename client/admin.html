@@ -307,7 +307,7 @@
   padding: 24px;
   background:
     linear-gradient(120deg, rgba(8,18,35,.96), rgba(10,86,168,.76)),
-    url("/images/truck/54901-70014-CA/1 (1).jpg") center/cover no-repeat;
+    url("/images/special/43118/1200x900.jpg") center/cover no-repeat;
 }
 
 .login-card {
@@ -656,26 +656,20 @@ body:not(.locked) .login-screen {
 
       <p class="help">
         Заполни данные автомобиля. Фото можно указывать как путь внутри сайта
-        например: <b>/images/truck/5490/1 (1).jpg</b>
+        например: <b>/images/truck/4308/1200x900 (1).jpg</b>
       </p>
 
       <div class="quick-photo">
         <h3>Быстро добавить фото</h3>
         <p>
-          Сначала добавь фотографии в папку модели, например
-          <b>client/images/dump/6595</b>. Потом выбери папку здесь, и админка сама заполнит пути
+          Сначала добавь фотографии в папку опубликованной модели, например
+          <b>client/images/truck/65117</b>. Потом выбери папку здесь, и админка сама заполнит пути
           для главного фото и галереи.
         </p>
 
         <div class="quick-photo-grid">
           <label>Папка модели
             <select id="quickPhotoFolder" onchange="syncQuickPhotoFolder()">
-              <option value="/images/dump/65115-6056-48/">dump / 65115-6056-48</option>
-              <option value="/images/dump/6520-49 (B5)/">dump / 6520-49 (B5)</option>
-              <option value="/images/dump/6595/">dump / 6595</option>
-              <option value="/images/dump/6560/">dump / 6560</option>
-              <option value="/images/truck/5490/">truck / 5490</option>
-              <option value="/images/truck/54901-70014-CA/">truck / 54901-70014-CA</option>
               <option value="/images/truck/65117/">truck / 65117</option>
               <option value="/images/truck/5325/">truck / 5325</option>
               <option value="/images/truck/4308/">truck / 4308</option>
@@ -686,7 +680,7 @@ body:not(.locked) .login-screen {
           </label>
 
           <label>Своя папка
-            <input id="quickPhotoCustomFolder" placeholder="/images/dump/6595/">
+            <input id="quickPhotoCustomFolder" placeholder="/images/truck/65117/">
           </label>
 
           <label>Формат имен
@@ -759,7 +753,7 @@ body:not(.locked) .login-screen {
           <option value="Продано">Продано</option>
         </select>
 
-        <input id="vehicleImage" placeholder="Главное фото, например /images/truck/5490/1 (1).jpg">
+        <input id="vehicleImage" placeholder="Главное фото, например /images/truck/4308/1200x900 (1).jpg">
 
 <input id="vehicleImage1" placeholder="Фото 1">
 <input id="vehicleImage2" placeholder="Фото 2">
@@ -782,7 +776,7 @@ body:not(.locked) .login-screen {
       </div>
 
       <aside class="draft-card" aria-label="Предпросмотр карточки">
-        <img id="draftImage" src="/images/truck/5490/1 (1).jpg" alt="Предпросмотр техники" onerror="this.src='/images/truck/5490/1 (1).jpg'">
+        <img id="draftImage" src="/images/truck/4308/1200x900 (1).jpg" alt="Предпросмотр техники" onerror="this.src='/images/truck/4308/1200x900 (1).jpg'">
         <div class="draft-body">
           <span class="status status-new" id="draftStatus">В наличии</span>
           <h3 id="draftTitle">КАМАЗ</h3>
@@ -1012,7 +1006,7 @@ function updateDraftPreview() {
   const title = document.getElementById('vehicleTitle').value || 'КАМАЗ';
   const description = document.getElementById('vehicleDescription').value || 'Заполните форму, и здесь появится черновик карточки.';
   const price = Number(document.getElementById('vehiclePrice').value);
-  const image = document.getElementById('vehicleImage').value || '/images/truck/5490/1 (1).jpg';
+  const image = document.getElementById('vehicleImage').value || '/images/truck/4308/1200x900 (1).jpg';
   const status = document.getElementById('vehicleStatus').value || 'В наличии';
 
   document.getElementById('draftTitle').textContent = title;
@@ -1561,3 +1555,4 @@ updateDraftPreview();
 
 </body>
 </html>
+
