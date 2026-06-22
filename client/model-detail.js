@@ -3,7 +3,7 @@ function renderModelPage(slug) {
   const root = document.getElementById("modelPage");
 
   if (!model || !root) {
-    document.title = "Модель не найдена — КамЦентр";
+    document.title = "Модель не найдена - КамЦентр";
     if (root) {
       root.innerHTML = `
         <section class="model-empty">
@@ -16,7 +16,7 @@ function renderModelPage(slug) {
     return;
   }
 
-  document.title = `${model.title} — КамЦентр`;
+  document.title = `${model.title} - КамЦентр`;
 
   const mainImage = model.image;
   const fallback = model.fallbackImage || model.image;
@@ -90,7 +90,6 @@ function renderModelPage(slug) {
         </div>
         <div class="deal-actions">
           <a class="btn btn-primary" href="/index.html#lead-form" onclick="sessionStorage.setItem('kamazLeadModel', '${model.title}')">Оставить заявку</a>
-          <a class="btn btn-outline" href="https://wa.me/79274191444" target="_blank" rel="noopener">WhatsApp</a>
           <a class="btn btn-outline" href="https://max.ru/" target="_blank" rel="noopener">MAX</a>
         </div>
       </div>

@@ -3,423 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Р’Р°РєР°РЅСЃРёРё вЂ” РљР°РјР¦РµРЅС‚СЂ</title>
-
+  <title>Вакансии - КамЦентр</title>
   <link rel="stylesheet" href="/styles.css">
-  <script src="/layout.js?v=5"></script>
-
-  <style>
-    :root {
-      --ink: #111827;
-      --muted: #5b6472;
-      --line: #d7dde7;
-      --paper: #ffffff;
-      --soft: #f4f6f9;
-      --blue: #0a56a8;
-      --blue-dark: #073b76;
-      --red: #c9252d;
-      --green: #13795b;
-      --shadow: 0 18px 48px rgba(16, 24, 40, .12);
-    }
-
-    body {
-      background: var(--soft);
-      color: var(--ink);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .vacancy-hero {
-      min-height: 430px;
-      display: grid;
-      align-items: end;
-      color: #fff;
-      background:
-        linear-gradient(90deg, rgba(8, 18, 35, .96), rgba(8, 18, 35, .78), rgba(8, 18, 35, .36)),
-        url("/images/special/43118/1200x900.jpg") center / cover no-repeat;
-    }
-
-    .page-inner {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .vacancy-hero .page-inner {
-      padding: 84px 0 56px;
-    }
-
-    .kicker {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 7px 12px;
-      border: 1px solid rgba(255, 255, 255, .28);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .1);
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      max-width: 720px;
-      margin: 18px 0;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.02;
-      letter-spacing: 0;
-    }
-
-    .hero-copy {
-      max-width: 680px;
-      color: rgba(255, 255, 255, .86);
-      font-size: 18px;
-      line-height: 1.65;
-    }
-
-    .page-section {
-      padding: 64px 0;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 28px;
-      margin-bottom: 28px;
-    }
-
-    .section-head h2 {
-      margin: 6px 0 0;
-      font-size: clamp(26px, 3vw, 40px);
-      color: var(--ink);
-    }
-
-    .section-head p {
-      max-width: 560px;
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 22px;
-    }
-
-    .tab-btn {
-      min-height: 42px;
-      padding: 9px 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      color: var(--blue-dark);
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .tab-btn.active {
-      border-color: var(--blue);
-      background: var(--blue);
-      color: #fff;
-    }
-
-    .vacancy-grid,
-    .benefit-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .vacancy-card,
-    .benefit-card,
-    .process-card,
-    .contact-panel {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--paper);
-      box-shadow: 0 8px 26px rgba(16, 24, 40, .06);
-    }
-
-    .vacancy-card {
-      display: none;
-      overflow: hidden;
-    }
-
-    .vacancy-card.visible {
-      display: block;
-    }
-
-    .vacancy-top {
-      padding: 22px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(135deg, #fff, #f3f7fc);
-    }
-
-    .vacancy-top span {
-      display: inline-block;
-      margin-bottom: 12px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      background: #e7f1ff;
-      color: var(--blue-dark);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    .vacancy-top h3 {
-      margin: 0 0 8px;
-      font-size: 24px;
-      color: var(--ink);
-    }
-
-    .salary {
-      color: var(--green);
-      font-size: 18px;
-      font-weight: 900;
-    }
-
-    .vacancy-body {
-      padding: 22px;
-    }
-
-    .vacancy-body h4 {
-      margin: 20px 0 8px;
-      color: var(--blue-dark);
-      font-size: 16px;
-    }
-
-    .vacancy-body ul {
-      margin: 0;
-      padding-left: 20px;
-      color: #344054;
-      line-height: 1.7;
-    }
-
-    .benefit-card,
-    .process-card {
-      padding: 22px;
-    }
-
-    .benefit-card strong,
-    .process-card strong {
-      display: block;
-      margin-bottom: 10px;
-      color: var(--blue-dark);
-      font-size: 18px;
-    }
-
-    .benefit-card p,
-    .process-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.65;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .step-num {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 16px;
-      border-radius: 8px;
-      background: var(--red);
-      color: #fff;
-      font-weight: 900;
-    }
-
-    .contact-band {
-      background: #08172d;
-      color: #fff;
-    }
-
-    .contact-layout {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .contact-panel {
-      padding: 24px;
-      color: var(--ink);
-    }
-
-    .contact-panel label {
-      display: block;
-      margin-bottom: 12px;
-      color: var(--ink);
-      font-weight: 800;
-    }
-
-    .contact-panel input,
-    .contact-panel textarea,
-    .contact-panel select {
-      width: 100%;
-      margin-top: 6px;
-      padding: 14px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      font: inherit;
-    }
-
-    .contact-panel textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 13px 20px;
-      border: 1px solid transparent;
-      border-radius: 8px;
-      background: var(--red);
-      color: #fff;
-      font-weight: 900;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .notice {
-      min-height: 24px;
-      margin-top: 12px;
-      color: var(--green);
-      font-weight: 800;
-    }
-
-    .notice.error {
-      color: var(--red);
-    }
-
-    @media (max-width: 900px) {
-      .section-head,
-      .contact-layout {
-        display: block;
-      }
-
-      .vacancy-grid,
-      .benefit-grid,
-      .process-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-panel {
-        margin-top: 24px;
-      }
-    }
-  </style>
   <link rel="stylesheet" href="/theme.css">
+  <script src="/layout.js?v=5"></script>
   <script src="/api.js?v=postgres1"></script>
+  <style>
+    :root { --ink:#111827; --muted:#5b6472; --line:#d7dde7; --paper:#fff; --soft:#f4f6f9; --blue:#0a56a8; --blue-dark:#073b76; --red:#c9252d; --green:#13795b; }
+    body { background: var(--soft); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+    .page-inner { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    .vacancy-hero { min-height: 430px; display: grid; align-items: end; color: #fff; background: linear-gradient(90deg, rgba(8,18,35,.96), rgba(8,18,35,.78), rgba(8,18,35,.35)), url("/images/special/43118/1200x900.jpg") center / cover no-repeat; }
+    .vacancy-hero .page-inner { padding: 84px 0 56px; }
+    .kicker { display: inline-flex; align-items: center; min-height: 34px; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 8px; background: rgba(255,255,255,.1); font-size: 14px; font-weight: 900; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 18px 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.04; letter-spacing: 0; }
+    .hero-copy { max-width: 720px; color: rgba(255,255,255,.86); font-size: 18px; line-height: 1.65; }
+    .page-section { padding: 64px 0; }
+    .section-head { display: grid; grid-template-columns: .8fr 1.2fr; gap: 28px; align-items: end; margin-bottom: 28px; }
+    .section-head h2 { margin: 0; color: var(--blue-dark); font-size: clamp(28px, 4vw, 42px); line-height: 1.08; }
+    .section-head p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+    .filter-btn { min-height: 42px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--blue-dark); font-weight: 900; cursor: pointer; }
+    .filter-btn.active { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .vacancy-grid, .benefit-grid, .process-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .vacancy-card, .benefit-card, .process-card, .apply-panel { border: 1px solid var(--line); border-radius: 8px; background: var(--paper); box-shadow: 0 10px 28px rgba(16,24,40,.08); }
+    .vacancy-card { display: none; padding: 24px; }
+    .vacancy-card.visible { display: grid; gap: 16px; }
+    .vacancy-card h3, .benefit-card h3, .process-card h3 { margin: 0; color: var(--blue-dark); font-size: 22px; line-height: 1.2; }
+    .vacancy-card p, .benefit-card p, .process-card p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .meta { display: flex; gap: 8px; flex-wrap: wrap; }
+    .meta span, .salary { display: inline-flex; align-items: center; min-height: 30px; padding: 6px 10px; border-radius: 8px; background: #eef4fb; color: var(--blue-dark); font-size: 13px; font-weight: 900; }
+    .salary { width: fit-content; background: #ecfdf5; color: var(--green); }
+    ul { margin: 0; padding-left: 18px; color: #344054; line-height: 1.7; }
+    .benefit-card, .process-card { padding: 24px; }
+    .num { width: 38px; height: 38px; display: grid; place-items: center; margin-bottom: 14px; border-radius: 8px; background: var(--blue); color: #fff; font-weight: 900; }
+    .apply-panel { display: grid; grid-template-columns: .85fr 1.15fr; gap: 28px; padding: 30px; align-items: start; }
+    label { display: grid; gap: 7px; color: #344054; font-size: 14px; font-weight: 900; }
+    input, select, textarea { width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); font: inherit; }
+    textarea { min-height: 110px; resize: vertical; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-grid .wide { grid-column: 1 / -1; }
+    .notice { min-height: 24px; margin-top: 12px; color: var(--green); font-weight: 900; }
+    .notice.error { color: var(--red); }
+    @media (max-width: 900px) { .section-head, .vacancy-grid, .benefit-grid, .process-grid, .apply-panel, .form-grid { grid-template-columns: 1fr; } .form-grid .wide { grid-column: auto; } }
+  </style>
 </head>
 <body>
   <script>renderHeader()</script>
-
   <main>
     <section class="vacancy-hero">
       <div class="page-inner">
-        <div class="kicker">Р Р°Р±РѕС‚Р° РІ РљР°РјР¦РµРЅС‚СЂ</div>
-        <h1>Р’Р°РєР°РЅСЃРёРё РґР»СЏ С‚РµС…, РєС‚Рѕ РїРѕРЅРёРјР°РµС‚ С‚РµС…РЅРёРєСѓ Рё Р»СЋР±РёС‚ СЂРµР·СѓР»СЊС‚Р°С‚</h1>
-        <p class="hero-copy">РњС‹ РїСЂРѕРґР°РµРј РєРѕРјРјРµСЂС‡РµСЃРєСѓСЋ С‚РµС…РЅРёРєСѓ РљРђРњРђР—, СЃРѕРїСЂРѕРІРѕР¶РґР°РµРј РєР»РёРµРЅС‚РѕРІ РѕС‚ РїРѕРґР±РѕСЂР° РјРѕРґРµР»Рё РґРѕ РїРµСЂРµРґР°С‡Рё РјР°С€РёРЅС‹ Рё РёС‰РµРј Р»СЋРґРµР№, РєРѕС‚РѕСЂС‹Рµ СѓРјРµСЋС‚ СЂР°Р·РіРѕРІР°СЂРёРІР°С‚СЊ СЃ Р±РёР·РЅРµСЃРѕРј РїРѕ РґРµР»Сѓ.</p>
+        <span class="kicker">Карьера в КамЦентр</span>
+        <h1>Вакансии для тех, кто хочет работать с техникой КАМАЗ</h1>
+        <p class="hero-copy">Мы развиваем сайт, заявки, продажи, лизинг и сопровождение клиентов. Нам нужны люди, которые умеют общаться, разбираться в задачах бизнеса и доводить работу до результата.</p>
       </div>
     </section>
 
     <section class="page-section">
       <div class="page-inner">
         <div class="section-head">
-          <div>
-            <div class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#fff;">РћС‚РєСЂС‹С‚С‹Рµ СЂРѕР»Рё</div>
-            <h2>РљРѕРіРѕ РёС‰РµРј СЃРµР№С‡Р°СЃ</h2>
-          </div>
-          <p>Р’С‹Р±РµСЂРёС‚Рµ РЅР°РїСЂР°РІР»РµРЅРёРµ. Р’ РєР°Р¶РґРѕР№ РєР°СЂС‚РѕС‡РєРµ СЂР°СЃРїРёСЃР°РЅС‹ Р·Р°РґР°С‡Рё, С‚СЂРµР±РѕРІР°РЅРёСЏ, СѓСЃР»РѕРІРёСЏ Рё РєРѕРјСѓ РїРѕРґРѕР№РґРµС‚ РІР°РєР°РЅСЃРёСЏ.</p>
+          <h2>Открытые вакансии</h2>
+          <p>Выберите направление и отправьте отклик. Если подходящей роли нет, оставьте заявку в свободной форме: мы сохраним контакт и свяжемся при появлении позиции.</p>
         </div>
-
-        <div class="tabs" aria-label="Р¤РёР»СЊС‚СЂ РІР°РєР°РЅСЃРёР№">
-          <button class="tab-btn active" type="button" data-filter="all">Р’СЃРµ</button>
-          <button class="tab-btn" type="button" data-filter="sales">РџСЂРѕРґР°Р¶Рё</button>
-          <button class="tab-btn" type="button" data-filter="tech">РўРµС…РЅРёРєР°</button>
-          <button class="tab-btn" type="button" data-filter="office">РћС„РёСЃ</button>
+        <div class="filters">
+          <button class="filter-btn active" type="button" data-filter="all">Все</button>
+          <button class="filter-btn" type="button" data-filter="sales">Продажи</button>
+          <button class="filter-btn" type="button" data-filter="tech">Техника</button>
+          <button class="filter-btn" type="button" data-filter="office">Офис</button>
         </div>
-
         <div class="vacancy-grid">
           <article class="vacancy-card visible" data-category="sales">
-            <div class="vacancy-top">
-              <span>РџСЂРѕРґР°Р¶Рё</span>
-              <h3>РњРµРЅРµРґР¶РµСЂ РїРѕ РїСЂРѕРґР°Р¶Р°Рј С‚РµС…РЅРёРєРё</h3>
-              <div class="salary">РћРєР»Р°Рґ + РїСЂРѕС†РµРЅС‚ РѕС‚ СЃРґРµР»РєРё</div>
-            </div>
-            <div class="vacancy-body">
-              <p>Р Р°Р±РѕС‚Р° СЃ РІС…РѕРґСЏС‰РёРјРё Р·Р°СЏРІРєР°РјРё, РєРѕРЅСЃСѓР»СЊС‚Р°С†РёСЏ РєР»РёРµРЅС‚РѕРІ Рё СЃРѕРїСЂРѕРІРѕР¶РґРµРЅРёРµ РїРѕРєСѓРїРєРё РіСЂСѓР·РѕРІРѕР№ С‚РµС…РЅРёРєРё.</p>
-              <h4>Р—Р°РґР°С‡Рё</h4>
-              <ul>
-                <li>РїСЂРёРЅРёРјР°С‚СЊ Р·Р°СЏРІРєРё СЃ СЃР°Р№С‚Р° Рё РїРѕ С‚РµР»РµС„РѕРЅСѓ;</li>
-                <li>СѓС‚РѕС‡РЅСЏС‚СЊ Р·Р°РґР°С‡Сѓ РєР»РёРµРЅС‚Р° Рё РїРѕРґР±РёСЂР°С‚СЊ РјРѕРґРµР»СЊ;</li>
-                <li>РіРѕС‚РѕРІРёС‚СЊ РєРѕРјРјРµСЂС‡РµСЃРєРёРµ РїСЂРµРґР»РѕР¶РµРЅРёСЏ;</li>
-                <li>РІРµСЃС‚Рё РєР»РёРµРЅС‚Р° РґРѕ РѕРїР»Р°С‚С‹ Рё РїРµСЂРµРґР°С‡Рё С‚РµС…РЅРёРєРё.</li>
-              </ul>
-              <h4>Р’Р°Р¶РЅРѕ</h4>
-              <ul>
-                <li>РіСЂР°РјРѕС‚РЅР°СЏ СЂРµС‡СЊ Рё СЃРїРѕРєРѕР№РЅР°СЏ СЂР°Р±РѕС‚Р° СЃ РєР»РёРµРЅС‚Р°РјРё;</li>
-                <li>РёРЅС‚РµСЂРµСЃ Рє РєРѕРјРјРµСЂС‡РµСЃРєРѕР№ С‚РµС…РЅРёРєРµ;</li>
-                <li>СѓРјРµРЅРёРµ РґРѕРІРѕРґРёС‚СЊ СЃРґРµР»РєРё РґРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°.</li>
-              </ul>
-            </div>
+            <div class="meta"><span>Продажи</span><span>полный день</span></div>
+            <h3>Менеджер по продажам техники</h3>
+            <p>Обработка заявок с сайта, подбор моделей, подготовка коммерческих предложений и сопровождение клиента до сделки.</p>
+            <ul><li>знание этапов продаж</li><li>грамотная речь и аккуратность в CRM</li><li>интерес к грузовой технике</li></ul>
+            <strong class="salary">доход обсуждается на собеседовании</strong>
+            <button class="btn btn-primary vacancy-apply" type="button" data-role="Менеджер по продажам техники">Откликнуться</button>
           </article>
-
           <article class="vacancy-card visible" data-category="tech">
-            <div class="vacancy-top">
-              <span>РўРµС…РЅРёРєР°</span>
-              <h3>РЎРїРµС†РёР°Р»РёСЃС‚ РїРѕ РєРѕРјРїР»РµРєС‚Р°С†РёСЏРј</h3>
-              <div class="salary">РћР±СЃСѓР¶РґР°РµС‚СЃСЏ РїРѕ РѕРїС‹С‚Сѓ</div>
-            </div>
-            <div class="vacancy-body">
-              <p>РџРѕРјРѕС‰СЊ РјРµРЅРµРґР¶РµСЂР°Рј Рё РєР»РёРµРЅС‚Р°Рј РІ РїРѕРґР±РѕСЂРµ С€Р°СЃСЃРё, РєСѓР·РѕРІРѕРІ, РЅР°РґСЃС‚СЂРѕРµРє Рё С‚РµС…РЅРёС‡РµСЃРєРёС… СЂРµС€РµРЅРёР№.</p>
-              <h4>Р—Р°РґР°С‡Рё</h4>
-              <ul>
-                <li>СЃСЂР°РІРЅРёРІР°С‚СЊ РјРѕРґРµР»Рё РљРђРњРђР— РїРѕРґ Р·Р°РґР°С‡Сѓ РєР»РёРµРЅС‚Р°;</li>
-                <li>РїСЂРѕРІРµСЂСЏС‚СЊ С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё Рё СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚СЊ РЅР°РґСЃС‚СЂРѕРµРє;</li>
-                <li>РїРѕРґРіРѕС‚РѕРІРёС‚СЊ РїРѕРЅСЏС‚РЅС‹Рµ СЂРµРєРѕРјРµРЅРґР°С†РёРё РґР»СЏ РєР»РёРµРЅС‚Р°;</li>
-                <li>СѓС‡Р°СЃС‚РІРѕРІР°С‚СЊ РІ СЃРѕРіР»Р°СЃРѕРІР°РЅРёРё РїРѕСЃС‚Р°РІРєРё.</li>
-              </ul>
-              <h4>Р’Р°Р¶РЅРѕ</h4>
-              <ul>
-                <li>РїРѕРЅРёРјР°РЅРёРµ РіСЂСѓР·РѕРІРѕР№ С‚РµС…РЅРёРєРё;</li>
-                <li>РІРЅРёРјР°С‚РµР»СЊРЅРѕСЃС‚СЊ Рє РґРµС‚Р°Р»СЏРј;</li>
-                <li>СѓРјРµРЅРёРµ РѕР±СЉСЏСЃРЅСЏС‚СЊ СЃР»РѕР¶РЅРѕРµ РїСЂРѕСЃС‚С‹РјРё СЃР»РѕРІР°РјРё.</li>
-              </ul>
-            </div>
+            <div class="meta"><span>Техника</span><span>гибкий график</span></div>
+            <h3>Специалист по подбору комплектаций</h3>
+            <p>Помощь менеджерам в выборе модели, шасси, надстройки и параметров под задачу клиента.</p>
+            <ul><li>понимание грузовой техники</li><li>умение читать характеристики</li><li>внимательность к деталям</li></ul>
+            <strong class="salary">по договоренности</strong>
+            <button class="btn btn-primary vacancy-apply" type="button" data-role="Специалист по подбору комплектаций">Откликнуться</button>
           </article>
-
           <article class="vacancy-card visible" data-category="office">
-            <div class="vacancy-top">
-              <span>РћС„РёСЃ</span>
-              <h3>РљРѕРѕСЂРґРёРЅР°С‚РѕСЂ Р·Р°СЏРІРѕРє</h3>
-              <div class="salary">Р¤РёРєСЃРёСЂРѕРІР°РЅРЅС‹Р№ РѕРєР»Р°Рґ</div>
-            </div>
-            <div class="vacancy-body">
-              <p>РђРґРјРёРЅРёСЃС‚СЂР°С‚РёРІРЅР°СЏ РїРѕРґРґРµСЂР¶РєР° РїСЂРѕРґР°Р¶: РїРѕСЂСЏРґРѕРє РІ Р·Р°СЏРІРєР°С…, РґРѕРєСѓРјРµРЅС‚Р°С… Рё РєРѕРјРјСѓРЅРёРєР°С†РёРё СЃ РєР»РёРµРЅС‚Р°РјРё.</p>
-              <h4>Р—Р°РґР°С‡Рё</h4>
-              <ul>
-                <li>СЂР°СЃРїСЂРµРґРµР»СЏС‚СЊ РѕР±СЂР°С‰РµРЅРёСЏ РјРµР¶РґСѓ РјРµРЅРµРґР¶РµСЂР°РјРё;</li>
-                <li>СЃР»РµРґРёС‚СЊ Р·Р° СЃС‚Р°С‚СѓСЃР°РјРё Р·Р°СЏРІРѕРє;</li>
-                <li>РіРѕС‚РѕРІРёС‚СЊ РґРѕРєСѓРјРµРЅС‚С‹ Рё СЃС‡РµС‚Р°;</li>
-                <li>РЅР°РїРѕРјРёРЅР°С‚СЊ РєРѕРјР°РЅРґРµ Рѕ РІР°Р¶РЅС‹С… СЌС‚Р°РїР°С… СЃРґРµР»РєРё.</li>
-              </ul>
-              <h4>Р’Р°Р¶РЅРѕ</h4>
-              <ul>
-                <li>Р°РєРєСѓСЂР°С‚РЅРѕСЃС‚СЊ Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ;</li>
-                <li>СѓРІРµСЂРµРЅРЅР°СЏ СЂР°Р±РѕС‚Р° СЃ С‚Р°Р±Р»РёС†Р°РјРё Рё CRM;</li>
-                <li>РіРѕС‚РѕРІРЅРѕСЃС‚СЊ Р±С‹СЃС‚СЂРѕ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ РїСЂРѕС†РµСЃСЃР°С….</li>
-              </ul>
-            </div>
+            <div class="meta"><span>Офис</span><span>стажировка возможна</span></div>
+            <h3>Администратор заявок</h3>
+            <p>Проверка входящих обращений, распределение по менеджерам, контроль статусов и первичная связь с клиентом.</p>
+            <ul><li>уверенная работа с компьютером</li><li>ответственность</li><li>быстрая реакция на новые заявки</li></ul>
+            <strong class="salary">фикс + премия</strong>
+            <button class="btn btn-primary vacancy-apply" type="button" data-role="Администратор заявок">Откликнуться</button>
           </article>
         </div>
       </div>
@@ -428,26 +102,13 @@
     <section class="page-section" style="background:#fff;">
       <div class="page-inner">
         <div class="section-head">
-          <div>
-            <div class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#f4f6f9;">РЈСЃР»РѕРІРёСЏ</div>
-            <h2>Р§С‚Рѕ РїСЂРµРґР»Р°РіР°РµРј</h2>
-          </div>
-          <p>РњС‹ С†РµРЅРёРј СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕСЃС‚СЊ, С‡РµСЃС‚РЅСѓСЋ РєРѕРјРјСѓРЅРёРєР°С†РёСЋ Рё Р¶РµР»Р°РЅРёРµ СЂР°Р·Р±РёСЂР°С‚СЊСЃСЏ РІ РїСЂРѕРґСѓРєС‚Рµ РіР»СѓР±Р¶Рµ, С‡РµРј В«РїСЂРѕСЃС‚Рѕ РїСЂРѕРґР°С‚СЊВ».</p>
+          <h2>Что важно в работе</h2>
+          <p>Мы ценим не формальные обещания, а понятную коммуникацию, точность в заявках и желание разобраться в задаче клиента.</p>
         </div>
-
         <div class="benefit-grid">
-          <div class="benefit-card">
-            <strong>РџРѕРЅСЏС‚РЅС‹Р№ РїСЂРѕРґСѓРєС‚</strong>
-            <p>РљРђРњРђР— РЅСѓР¶РµРЅ СЃС‚СЂРѕРёС‚РµР»СЏРј, РїРµСЂРµРІРѕР·С‡РёРєР°Рј Рё РїСЂРѕРјС‹С€Р»РµРЅРЅС‹Рј РєРѕРјРїР°РЅРёСЏРј. РљР»РёРµРЅС‚ РїСЂРёС…РѕРґРёС‚ СЃ СЂРµР°Р»СЊРЅРѕР№ Р·Р°РґР°С‡РµР№, Р° РЅРµ СЃР»СѓС‡Р°Р№РЅС‹Рј РёРЅС‚РµСЂРµСЃРѕРј.</p>
-          </div>
-          <div class="benefit-card">
-            <strong>РџРѕРґРґРµСЂР¶РєР° РІ СЃРґРµР»РєР°С…</strong>
-            <p>РџРѕРјРѕРіР°РµРј СЃ СЂР°СЃС‡РµС‚РѕРј, РєРѕРјРїР»РµРєС‚Р°С†РёСЏРјРё, Р»РёР·РёРЅРіРѕРј Рё РґРѕРєСѓРјРµРЅС‚Р°РјРё, С‡С‚РѕР±С‹ РјРµРЅРµРґР¶РµСЂ РјРѕРі СѓРІРµСЂРµРЅРЅРѕ РІРµСЃС‚Рё РєР»РёРµРЅС‚Р°.</p>
-          </div>
-          <div class="benefit-card">
-            <strong>Р РѕСЃС‚ РґРѕС…РѕРґР°</strong>
-            <p>Р’ РїСЂРѕРґР°Р¶Р°С… РґРµР№СЃС‚РІСѓРµС‚ РјРѕС‚РёРІР°С†РёСЏ РѕС‚ СЂРµР·СѓР»СЊС‚Р°С‚Р°. Р§РµРј С‚РѕС‡РЅРµРµ СЂР°Р±РѕС‚Р° СЃ РєР»РёРµРЅС‚РѕРј, С‚РµРј РІС‹С€Рµ РёС‚РѕРіРѕРІС‹Р№ РґРѕС…РѕРґ.</p>
-          </div>
+          <div class="benefit-card"><h3>Понятные задачи</h3><p>Каждый отклик, звонок и расчет фиксируется, поэтому видно, что уже сделано и что нужно довести.</p></div>
+          <div class="benefit-card"><h3>Рост в теме</h3><p>Можно разобраться в моделях КАМАЗ, лизинге, надстройках и реальных задачах бизнеса.</p></div>
+          <div class="benefit-card"><h3>Работа с заявками</h3><p>Сайт и CRM помогают не терять клиентов и быстрее возвращаться к разговору.</p></div>
         </div>
       </div>
     </section>
@@ -455,128 +116,82 @@
     <section class="page-section">
       <div class="page-inner">
         <div class="section-head">
-          <div>
-            <div class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#fff;">РћС‚РєР»РёРє</div>
-            <h2>РљР°Рє РїРѕРїР°СЃС‚СЊ РІ РєРѕРјР°РЅРґСѓ</h2>
-          </div>
-          <p>РџСЂРѕС†РµСЃСЃ РїСЂРѕСЃС‚РѕР№ Рё РїСЂРѕР·СЂР°С‡РЅС‹Р№: СЃРЅР°С‡Р°Р»Р° Р·РЅР°РєРѕРјРёРјСЃСЏ, РїРѕС‚РѕРј РѕР±СЃСѓР¶РґР°РµРј РѕРїС‹С‚, Р·Р°РґР°С‡Рё Рё СѓСЃР»РѕРІРёСЏ.</p>
+          <h2>Как проходит отбор</h2>
+          <p>Процесс простой: отклик, короткое уточнение опыта, собеседование и решение по формату работы.</p>
         </div>
-
         <div class="process-grid">
-          <div class="process-card">
-            <div class="step-num">1</div>
-            <strong>РћСЃС‚Р°РІСЊС‚Рµ РєРѕРЅС‚Р°РєС‚С‹</strong>
-            <p>РЈРєР°Р¶РёС‚Рµ РІР°РєР°РЅСЃРёСЋ, С‚РµР»РµС„РѕРЅ Рё РєРѕСЂРѕС‚РєРѕ СЂР°СЃСЃРєР°Р¶РёС‚Рµ Рѕ СЃРІРѕРµРј РѕРїС‹С‚Рµ.</p>
-          </div>
-          <div class="process-card">
-            <div class="step-num">2</div>
-            <strong>РџРµСЂРІС‹Р№ СЂР°Р·РіРѕРІРѕСЂ</strong>
-            <p>РЈС‚РѕС‡РЅРёРј РѕР¶РёРґР°РЅРёСЏ, РіСЂР°С„РёРє, РѕРїС‹С‚ Рё РёРЅС‚РµСЂРµСЃ Рє С‚РµС…РЅРёРєРµ.</p>
-          </div>
-          <div class="process-card">
-            <div class="step-num">3</div>
-            <strong>РЎРѕР±РµСЃРµРґРѕРІР°РЅРёРµ</strong>
-            <p>Р Р°Р·Р±РµСЂРµРј СЂРµР°Р»СЊРЅС‹Рµ СЂР°Р±РѕС‡РёРµ СЃРёС‚СѓР°С†РёРё Рё С„РѕСЂРјР°С‚ РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ.</p>
-          </div>
-          <div class="process-card">
-            <div class="step-num">4</div>
-            <strong>РЎС‚Р°СЂС‚</strong>
-            <p>Р”Р°РґРёРј РІРІРѕРґРЅСѓСЋ РїРѕ РїСЂРѕРґСѓРєС‚Сѓ, РїСЂРѕС†РµСЃСЃР°Рј Рё С‚РµРєСѓС‰РёРј Р·Р°РґР°С‡Р°Рј.</p>
-          </div>
+          <div class="process-card"><div class="num">1</div><h3>Отклик</h3><p>Оставьте имя, телефон и вакансию, которая интересна.</p></div>
+          <div class="process-card"><div class="num">2</div><h3>Звонок</h3><p>Уточним опыт, ожидания и удобный формат работы.</p></div>
+          <div class="process-card"><div class="num">3</div><h3>Собеседование</h3><p>Обсудим задачи, график, оплату и первые шаги.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="page-section contact-band">
-      <div class="page-inner contact-layout">
+    <section class="page-section" id="apply">
+      <div class="page-inner apply-panel">
         <div>
-          <div class="kicker">РћС‚РєР»РёРєРЅСѓС‚СЊСЃСЏ</div>
-          <h2 style="font-size:clamp(28px,3vw,44px); margin:16px 0;">Р Р°СЃСЃРєР°Р¶РёС‚Рµ, РєР°РєР°СЏ СЂРѕР»СЊ РІР°Рј РёРЅС‚РµСЂРµСЃРЅР°</h2>
-          <p style="max-width:640px; color:rgba(255,255,255,.78); line-height:1.7;">РњРѕР¶РЅРѕ РѕС‚РїСЂР°РІРёС‚СЊ С„РѕСЂРјСѓ РёР»Рё РЅР°РїРёСЃР°С‚СЊ РЅР°РїСЂСЏРјСѓСЋ РЅР° РїРѕС‡С‚Сѓ. Р•СЃР»Рё РїРѕРґС…РѕРґСЏС‰РµР№ РІР°РєР°РЅСЃРёРё РЅРµС‚, РІСЃРµ СЂР°РІРЅРѕ РѕСЃС‚Р°РІСЊС‚Рµ РєРѕРЅС‚Р°РєС‚С‹ вЂ” РёРЅРѕРіРґР° РЅСѓР¶РЅС‹Рµ Р»СЋРґРё РїРѕСЏРІР»СЏСЋС‚СЃСЏ СЂР°РЅСЊС€Рµ РѕС‚РєСЂС‹С‚РѕР№ РїРѕР·РёС†РёРё.</p>
-          <p style="margin-top:24px;"><a style="color:#fff; font-weight:900;" href="mailto:energa432@mail.ru">energa432@mail.ru</a></p>
-          <p><a style="color:#fff; font-weight:900;" href="tel:+79274191444">+7 (927) 419-14-44</a></p>
+          <span class="kicker" style="color:var(--blue-dark); border-color:var(--line); background:#eef4fb;">Отклик</span>
+          <h2 style="margin:18px 0 12px; color:var(--blue-dark);">Оставьте заявку на вакансию</h2>
+          <p style="color:var(--muted); line-height:1.7;">Напишите, какая роль интересна и какой опыт у вас есть. Заявка попадет в админ-панель вместе с остальными обращениями.</p>
         </div>
-
-        <form class="contact-panel" onsubmit="sendVacancyLead(event)">
-          <label>Р’Р°С€Рµ РёРјСЏ
-            <input id="vacancyName" required autocomplete="name" placeholder="РРІР°РЅ">
-          </label>
-          <label>РўРµР»РµС„РѕРЅ
-            <input id="vacancyPhone" required autocomplete="tel" placeholder="+7 ___ ___-__-__">
-          </label>
-          <label>РРЅС‚РµСЂРµСЃРЅР°СЏ РІР°РєР°РЅСЃРёСЏ
-            <select id="vacancyRole">
-              <option>РњРµРЅРµРґР¶РµСЂ РїРѕ РїСЂРѕРґР°Р¶Р°Рј С‚РµС…РЅРёРєРё</option>
-              <option>РЎРїРµС†РёР°Р»РёСЃС‚ РїРѕ РєРѕРјРїР»РµРєС‚Р°С†РёСЏРј</option>
-              <option>РљРѕРѕСЂРґРёРЅР°С‚РѕСЂ Р·Р°СЏРІРѕРє</option>
-              <option>Р”СЂСѓРіР°СЏ СЂРѕР»СЊ</option>
-            </select>
-          </label>
-          <label>РљРѕСЂРѕС‚РєРѕ РѕР± РѕРїС‹С‚Рµ
-            <textarea id="vacancyComment" placeholder="РћРїС‹С‚ РІ РїСЂРѕРґР°Р¶Р°С…, С‚РµС…РЅРёРєРµ, РґРѕРєСѓРјРµРЅС‚Р°С… РёР»Рё СЂР°Р±РѕС‚Рµ СЃ РєР»РёРµРЅС‚Р°РјРё"></textarea>
-          </label>
-          <button class="btn" type="submit" style="width:100%;">РћС‚РїСЂР°РІРёС‚СЊ РѕС‚РєР»РёРє</button>
-          <div class="notice" id="vacancyNotice" aria-live="polite"></div>
+        <form id="vacancyForm">
+          <div class="form-grid">
+            <label>Имя<input id="name" required placeholder="Ваше имя"></label>
+            <label>Телефон<input id="phone" required placeholder="+7 ___ ___-__-__"></label>
+            <label class="wide">Вакансия<select id="role"><option>Менеджер по продажам техники</option><option>Специалист по подбору комплектаций</option><option>Администратор заявок</option><option>Другая вакансия</option></select></label>
+            <label class="wide">Комментарий<textarea id="details" placeholder="Опыт, город, удобный график, вопросы"></textarea></label>
+          </div>
+          <button class="btn btn-primary" type="submit" style="margin-top:14px; width:100%;">Отправить отклик</button>
+          <div class="notice" id="formNotice"></div>
         </form>
       </div>
     </section>
   </main>
-
   <script>renderFooter()</script>
-
   <script>
-    document.querySelectorAll(".tab-btn").forEach(button => {
+    const cards = document.querySelectorAll(".vacancy-card");
+    document.querySelectorAll(".filter-btn").forEach(button => {
       button.addEventListener("click", () => {
-        document.querySelectorAll(".tab-btn").forEach(item => item.classList.remove("active"));
+        document.querySelectorAll(".filter-btn").forEach(item => item.classList.remove("active"));
         button.classList.add("active");
-
         const filter = button.dataset.filter;
-        document.querySelectorAll(".vacancy-card").forEach(card => {
-          card.classList.toggle("visible", filter === "all" || card.dataset.category === filter);
-        });
+        cards.forEach(card => card.classList.toggle("visible", filter === "all" || card.dataset.category === filter));
       });
     });
 
-    async function sendVacancyLead(event) {
-      event.preventDefault();
+    document.querySelectorAll(".vacancy-apply").forEach(button => {
+      button.addEventListener("click", () => {
+        document.getElementById("role").value = button.dataset.role;
+        document.getElementById("apply").scrollIntoView({ behavior: "smooth" });
+      });
+    });
 
-      const notice = document.getElementById("vacancyNotice");
-      const name = document.getElementById("vacancyName").value.trim();
-      const phone = document.getElementById("vacancyPhone").value.trim();
-      const role = document.getElementById("vacancyRole").value;
-      const details = document.getElementById("vacancyComment").value.trim();
+    document.getElementById("vacancyForm").addEventListener("submit", async event => {
+      event.preventDefault();
+      const notice = document.getElementById("formNotice");
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const role = document.getElementById("role").value;
+      const details = document.getElementById("details").value.trim();
 
       notice.classList.remove("error");
-
-      if (!name || !phone) {
-        notice.classList.add("error");
-        notice.textContent = "Р’РІРµРґРёС‚Рµ РёРјСЏ Рё С‚РµР»РµС„РѕРЅ.";
-        return;
-      }
-
-      notice.textContent = "РћС‚РїСЂР°РІР»СЏРµРј РѕС‚РєР»РёРє...";
+      notice.textContent = "Отправляем отклик...";
 
       try {
         const response = await fetch(window.kamazApiUrl("/api/leads"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name,
-            phone,
-            comment: `РћС‚РєР»РёРє РЅР° РІР°РєР°РЅСЃРёСЋ: ${role}. ${details}`
-          })
+          body: JSON.stringify({ name, phone, comment: `Отклик на вакансию: ${role}. ${details}` })
         });
 
-        if (!response.ok) throw new Error("Request failed");
-
-        notice.textContent = "РћС‚РєР»РёРє РѕС‚РїСЂР°РІР»РµРЅ. РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё.";
+        if (!response.ok) throw new Error("send failed");
+        notice.textContent = "Отклик отправлен. Мы свяжемся с вами.";
         event.target.reset();
       } catch (error) {
         notice.classList.add("error");
-        notice.textContent = "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ С‡РµСЂРµР· СЃР°Р№С‚. РџРѕР·РІРѕРЅРёС‚Рµ РёР»Рё РЅР°РїРёС€РёС‚Рµ РЅР° РїРѕС‡С‚Сѓ.";
+        notice.textContent = "Не удалось отправить отклик. Позвоните нам или попробуйте позже.";
       }
-    }
+    });
   </script>
 </body>
 </html>
-

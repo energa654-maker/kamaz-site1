@@ -71,7 +71,7 @@ window.KAMAZ_MODELS = [
     category: "truck",
     categoryName: "Тягач",
     image: "/images/truck/4308/1200x900 (1).jpg",
-    gallery: ["/images/truck/4308/1200x900 (1).jpg", "/images/truck/5325/1200x900.jpg"],
+    gallery: ["/images/truck/4308/1200x900 (1).jpg", "/images/truck/5325/1200x900.jpg", "/images/truck/5325/1200x900 (1).jpg"],
     photoFolder: "/images/truck/5325/",
     page: "/pages/5490.html",
     price: "от 9 200 000 ₽",
@@ -188,8 +188,8 @@ window.KAMAZ_MODELS = [
     category: "special",
     categoryName: "Шасси",
     image: "/images/truck/53605-6010-48/1200x900.jpg",
-    fallbackImage: "/images/truck/53605-6010-48/i.jpg",
-    gallery: ["/images/truck/53605-6010-48/1200x900.jpg", "/images/truck/53605-6010-48/247_original.jpg", "/images/truck/53605-6010-48/i.jpg"],
+    fallbackImage: "/images/truck/53605-6010-48/247_original.jpg",
+    gallery: ["/images/truck/53605-6010-48/1200x900.jpg", "/images/truck/53605-6010-48/247_original.jpg", "/images/truck/53605-6010-48/1200x900.jpg"],
     photoFolder: "/images/truck/53605-6010-48/",
     page: "/pages/53605.html",
     price: "от 6 900 000 ₽",
@@ -204,4 +204,3 @@ window.KAMAZ_MODELS = [
 function getKamazModel(slug) {
   return window.KAMAZ_MODELS.find(model => model.slug === slug);
 }
-
