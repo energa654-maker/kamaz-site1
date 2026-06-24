@@ -144,7 +144,7 @@ a.logo::before {
 
 .product-page::before,
 .admin-page::before {
-  content: "КамЦентр";
+  content: "КамАвтоВектор";
   display: inline-flex;
   align-items: center;
   margin-bottom: 16px;

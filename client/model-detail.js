@@ -3,7 +3,7 @@ function renderModelPage(slug) {
   const root = document.getElementById("modelPage");
 
   if (!model || !root) {
-    document.title = "Модель не найдена - КамЦентр";
+    document.title = "Модель не найдена - КамАвтоВектор";
     if (root) {
       root.innerHTML = `
         <section class="model-empty">
@@ -16,7 +16,7 @@ function renderModelPage(slug) {
     return;
   }
 
-  document.title = `${model.title} - КамЦентр`;
+  document.title = `${model.title} - КамАвтоВектор`;
 
   const mainImage = model.image;
   const fallback = model.fallbackImage || model.image;

@@ -2,7 +2,7 @@ function renderHeader() {
   document.write(`
     <script src="/api.js?v=postgres1"></script>
     <header class="header">
-      <a class="logo" href="/index.html">КамЦентр</a>
+      <a class="logo" href="/index.html">КамАвтоВектор</a>
 
       <button class="menu-btn" type="button" aria-label="Открыть меню" onclick="toggleLayoutMenu()">≡</button>
 
@@ -60,7 +60,7 @@ function renderFooter() {
       </div>
 
       <div class="copyright">
-        © 2026 ООО "МеталлМаш" — проект КамЦентр
+        © 2026 ООО "МеталлМаш" — проект КамАвтоВектор
       </div>
     </footer>
   `);
