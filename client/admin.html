@@ -531,7 +531,7 @@ body {
 }
 
 body:not(.locked) .header {
-  display: none;
+  display: none !important;
 }
 
 .admin-page {
@@ -679,7 +679,8 @@ body:not(.locked) .header {
 .form-grid button {
   min-height: 46px;
   padding: 12px 17px;
-  background: #0a56a8;
+  background: #0a56a8 !important;
+  color: #fff !important;
 }
 
 .status-filters {
