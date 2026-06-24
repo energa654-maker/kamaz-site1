@@ -44,6 +44,41 @@
     .form-grid .wide { grid-column: 1 / -1; }
     .notice { min-height: 24px; margin-top: 12px; color: var(--green); font-weight: 900; }
     .notice.error { color: var(--red); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 13px 20px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font: inherit;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 14px 34px rgba(201, 37, 45, .26);
+    }
+    .btn-primary:hover {
+      background: #b51f27;
+      transform: translateY(-1px);
+      box-shadow: 0 16px 38px rgba(201, 37, 45, .32);
+    }
+    .btn-primary:focus-visible {
+      outline: 3px solid rgba(201, 37, 45, .28);
+      outline-offset: 3px;
+    }
+    .btn-primary:disabled {
+      opacity: .65;
+      cursor: wait;
+      transform: none;
+    }
     @media (max-width: 900px) { .section-head, .vacancy-grid, .benefit-grid, .process-grid, .apply-panel, .form-grid { grid-template-columns: 1fr; } .form-grid .wide { grid-column: auto; } }
   </style>
 </head>
