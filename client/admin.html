@@ -6,6 +6,7 @@
 <title>CRM — КАМАЗ Центр</title>
 
 <link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="/theme.css">
 
 <style>
 .admin-page {
@@ -520,8 +521,382 @@ body:not(.locked) .login-screen {
     gap: 12px;
   }
 }
+
+/* Updated CRM workspace */
+body {
+  margin: 0;
+  background: #f3f5f8;
+  color: #111827;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body:not(.locked) .header {
+  display: none;
+}
+
+.admin-page {
+  width: min(1500px, 100%) !important;
+  max-width: none !important;
+  min-height: 100vh;
+  margin: 0 auto !important;
+  padding: 28px !important;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-areas:
+    "nav title"
+    "nav subtitle"
+    "nav content";
+  grid-template-rows: auto auto 1fr;
+  gap: 0 34px;
+}
+
+.admin-page::before {
+  display: none !important;
+}
+
+.admin-title {
+  grid-area: title;
+  margin: 6px 0 4px !important;
+  color: #0b2442 !important;
+  font-size: clamp(32px, 4vw, 46px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0;
+}
+
+.admin-subtitle {
+  grid-area: subtitle;
+  margin: 0 0 26px;
+  color: #667085;
+  font-size: 17px;
+}
+
+.tabs {
+  grid-area: nav;
+  position: sticky;
+  top: 28px;
+  align-self: start;
+  min-height: calc(100vh - 56px);
+  margin: 0;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+  background: #08172d;
+  box-shadow: 0 18px 45px rgba(8, 23, 45, .16);
+}
+
+.tabs::before {
+  content: "КамАвтоВектор";
+  display: block;
+  margin: 0 8px 26px;
+  color: #fff;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.tabs::after {
+  content: "CRM и управление каталогом";
+  margin: auto 8px 0;
+  padding-top: 22px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  color: #8fa2bd;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.tab-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #cbd5e1;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.tab-btn:hover {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+
+.tab-btn.active {
+  background: #0a56a8;
+  color: #fff;
+  box-shadow: none;
+}
+
+#leadsTab,
+#vehiclesTab {
+  grid-area: content;
+  min-width: 0;
+}
+
+.stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  min-height: 112px;
+  padding: 20px;
+  border-color: #d7dde7;
+  text-align: left;
+  box-shadow: none;
+}
+
+.stat-card h3 {
+  margin: 0 0 8px;
+  color: #073b76;
+  font-size: 34px;
+}
+
+.stat-card p {
+  margin: 0;
+}
+
+.admin-panel {
+  padding: 22px;
+  border-color: #d7dde7;
+  box-shadow: 0 10px 28px rgba(16,24,40,.06);
+}
+
+.admin-actions {
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.admin-actions input {
+  min-height: 48px;
+  background: #fff;
+}
+
+.admin-actions button,
+.form-grid button {
+  min-height: 46px;
+  padding: 12px 17px;
+  background: #0a56a8;
+}
+
+.status-filters {
+  margin-bottom: 18px;
+}
+
+.status-filter {
+  min-height: 40px;
+  background: #fff;
+}
+
+.status-filter.active {
+  border-color: #0a56a8;
+  background: #0a56a8;
+  color: #fff;
+}
+
+.lead-table {
+  display: none;
+}
+
+.lead-cards {
+  display: grid;
+  gap: 14px;
+}
+
+.lead-card {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(250px, 1.5fr) auto;
+  gap: 18px;
+  align-items: center;
+  border-color: #d7dde7;
+  box-shadow: none;
+}
+
+.lead-client h3 {
+  margin: 0 0 7px;
+  color: #111827;
+  font-size: 19px;
+}
+
+.lead-client a {
+  color: #667085;
+  text-decoration: none;
+}
+
+.lead-client time {
+  display: block;
+  margin-top: 8px;
+  color: #98a2b3;
+  font-size: 13px;
+}
+
+.lead-message strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #073b76;
+  font-size: 17px;
+}
+
+.lead-message p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #667085;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.lead-controls {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.lead-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.action-btn {
+  min-height: 38px;
+  margin: 0;
+  padding: 9px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.quick-action {
+  background: #0a56a8;
+  color: #fff;
+}
+
+.copy-btn {
+  background: #eef4fb;
+  color: #073b76;
+}
+
+.work-btn {
+  background: #fff6e5;
+  color: #8a5300;
+}
+
+.done-btn {
+  background: #ecfdf5;
+  color: #13795b;
+}
+
+.delete-btn {
+  background: #fff1f2;
+  color: #b4232c;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 92px;
+  min-height: 34px;
+  border-radius: 6px;
+}
+
+.status-new {
+  background: #e7f1ff;
+  color: #0057b8;
+}
+
+.status-work {
+  background: #fff6e5;
+  color: #8a5300;
+}
+
+.status-done {
+  background: #ecfdf5;
+  color: #13795b;
+}
+
+@media (max-width: 1050px) {
+  .admin-page {
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 0 22px;
+    padding: 20px !important;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lead-card {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  .lead-controls {
+    grid-column: 1 / -1;
+    justify-items: start;
+  }
+
+  .lead-controls-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .admin-page {
+    padding: 14px !important;
+    display: block;
+  }
+
+  .tabs {
+    position: static;
+    min-height: auto;
+    margin-bottom: 24px;
+    padding: 14px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .tabs::before {
+    width: 100%;
+    margin: 0 4px 8px;
+  }
+
+  .tabs::after {
+    display: none;
+  }
+
+  .tab-btn {
+    width: auto;
+    flex: 1;
+    text-align: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lead-card {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-controls {
+    grid-column: auto;
+    justify-items: start;
+  }
+
+  .admin-actions button {
+    flex: 1;
+  }
+}
 </style>
-  <link rel="stylesheet" href="/theme.css">
 </head>
 
 <body class="locked">
@@ -1521,6 +1896,113 @@ function escapeHtml(text) {
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
 }
+
+const legacyRenderLeads = renderLeads;
+
+renderLeads = function renderLeadsWorkspace() {
+  legacyRenderLeads();
+
+  const cards = document.getElementById('leadCards');
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = leads.filter(lead => {
+    const searchMatch = (
+      String(lead.name || '').toLowerCase().includes(search) ||
+      String(lead.phone || '').toLowerCase().includes(search) ||
+      String(lead.comment || '').toLowerCase().includes(search)
+    );
+    const statusMatch = activeLeadStatus === 'all' || (lead.status || 'new') === activeLeadStatus;
+    return searchMatch && statusMatch;
+  });
+
+  if (filtered.length === 0) {
+    cards.innerHTML = '<div class="empty">Заявок по выбранным условиям нет</div>';
+    return;
+  }
+
+  cards.innerHTML = filtered.map(lead => {
+    const phone = escapeHtml(lead.phone || '');
+    const date = new Date(lead.created_at).toLocaleString('ru-RU');
+    const comment = escapeHtml(lead.comment || 'Комментарий не указан');
+
+    return `
+      <article class="lead-card">
+        <div class="lead-client">
+          <h3>${escapeHtml(lead.name || 'Без имени')}</h3>
+          <a href="tel:${phone}">${phone || 'Телефон не указан'}</a>
+          <time>${date}</time>
+        </div>
+
+        <div class="lead-message">
+          <strong>Обращение с сайта</strong>
+          <p>${comment}</p>
+        </div>
+
+        <div class="lead-controls">
+          <span class="status ${getStatusClass(lead.status)}">${getStatusText(lead.status)}</span>
+          <div class="lead-controls-row">
+            <button class="action-btn copy-btn" type="button" onclick='copyText(${JSON.stringify(String(lead.phone || ''))})'>Телефон</button>
+            <button class="action-btn quick-action" type="button" onclick='openMaxChat(${JSON.stringify(String(lead.phone || ''))})'>MAX</button>
+            <button class="action-btn work-btn" type="button" onclick="updateStatus(${lead.id}, 'work')">В работу</button>
+            <button class="action-btn done-btn" type="button" onclick="updateStatus(${lead.id}, 'done')">Закрыть</button>
+            <button class="action-btn delete-btn" type="button" onclick="deleteLead(${lead.id})">Удалить</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+};
+
+const legacyShowTab = showTab;
+
+showTab = function showWorkspaceTab(tab, button) {
+  legacyShowTab(tab, button);
+  document.querySelector('.admin-title').textContent =
+    tab === 'vehicles' ? 'Управление автомобилями' : 'Заявки клиентов';
+  document.querySelector('.admin-subtitle').textContent =
+    tab === 'vehicles'
+      ? 'Добавление карточек, фотографий, цен и страниц моделей.'
+      : 'Управление обращениями, статусами и быстрыми действиями.';
+};
+
+function applyAdminLabels() {
+  document.title = 'CRM — КамАвтоВектор';
+  document.querySelector('.admin-title').textContent = 'Заявки клиентов';
+  document.querySelector('.admin-subtitle').textContent =
+    'Управление обращениями, статусами и каталогом сайта «КамАвтоВектор».';
+
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  if (tabButtons[0]) tabButtons[0].textContent = 'Заявки';
+  if (tabButtons[1]) tabButtons[1].textContent = 'Автомобили';
+
+  const statLabels = ['Всего заявок', 'Новые', 'В работе', 'Закрытые'];
+  document.querySelectorAll('.stat-card p').forEach((element, index) => {
+    if (statLabels[index]) element.textContent = statLabels[index];
+  });
+
+  document.getElementById('searchInput').placeholder = 'Поиск по имени, телефону или комментарию';
+
+  const actionButtons = document.querySelectorAll('#leadsTab .admin-actions button');
+  if (actionButtons[0]) actionButtons[0].textContent = 'Обновить';
+  if (actionButtons[1]) actionButtons[1].textContent = 'Скачать Excel';
+
+  const filterLabels = ['Все', 'Новые', 'В работе', 'Закрытые'];
+  document.querySelectorAll('.status-filter').forEach((element, index) => {
+    if (filterLabels[index]) element.textContent = filterLabels[index];
+  });
+
+  const loginTitle = document.querySelector('.login-card h1');
+  const loginCopy = document.querySelector('.login-card p');
+  const loginLabel = document.querySelector('.login-card label');
+  const loginButtons = document.querySelectorAll('.login-row button');
+  if (loginTitle) loginTitle.textContent = 'Вход в CRM';
+  if (loginCopy) loginCopy.textContent = 'Введите пароль администратора, чтобы открыть заявки и управление каталогом.';
+  if (loginLabel && loginLabel.firstChild) loginLabel.firstChild.textContent = 'Пароль ';
+  document.getElementById('adminPassword').placeholder = 'Введите пароль';
+  if (loginButtons[0]) loginButtons[0].textContent = 'Войти';
+  if (loginButtons[1]) loginButtons[1].textContent = 'Показать';
+}
+
+applyAdminLabels();
 
 document.getElementById('searchInput').addEventListener('input', renderLeads);
 document.getElementById('vehicleSearchInput').addEventListener('input', renderVehicles);
